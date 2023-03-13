@@ -22,12 +22,6 @@ body{
     background-position: center;
 }
 
-video{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
 ul{
     list-style-type: none;
 }
@@ -107,22 +101,11 @@ a{
     justify-content: center;
 }
 
-.signup-close-btn{
-    position: absolute;
-    top: 5%;
-    right: 5%;
-}
-
 .signup{
     width: 600px;
     height: 600px;
     box-shadow: 0px 1px 49px -11px rgba(0,0,0,0.37);
     border-radius: 1rem;
-}
-
-.close-btn{
-    color: red;
-    font-size: 5rem;
 }
 
 .signup-close-btn{
@@ -135,7 +118,7 @@ a{
     border-radius: 50%;
     z-index: 50000;
     transform: rotate(45deg);
-    border: 3px solid #B9BEC7;
+    border: 3px solid #03C988;
     transition: .3s;
 }
 
@@ -148,7 +131,7 @@ a{
     position: absolute;
     top: 50%;
     left: 50%;
-    background-color: #B9BEC7;
+    background-color: #03C988;
     transform: rotate(45deg) translate(10px, -8px);
     transition: .2s;
     transform: translate(-50%,-50%);
@@ -163,7 +146,7 @@ a{
     position: absolute;
     top: 50%;
     left: 50%;
-    background-color: #B9BEC7;
+    background-color: #03C988;
     transition: .2s;
     transform: translate(-50%,-50%);
     border-radius: 4px;

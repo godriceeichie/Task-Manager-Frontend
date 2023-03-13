@@ -1,13 +1,13 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Navbar from '../components';
 import MainContent from './MainContent';
 
 const Home = () => {
     return (
-        <>
+        <div>
+            {/* <h1>red</h1> */}
             <Outlet />
-        </>
+        </div>
     );
 }
 
