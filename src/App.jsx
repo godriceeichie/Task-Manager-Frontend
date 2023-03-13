@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
-import { Home, MainContent } from './pages'
+import { Home, MainContent, SignUp } from './pages'
 
 function App() {
 
@@ -9,6 +9,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Home />}>
         <Route index element={<MainContent />}/>
+        <Route path='/signup' element={<SignUp />} />
       </Route>
     </Routes>
   )

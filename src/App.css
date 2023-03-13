@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Lexend:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -7,6 +9,7 @@
 body{
     width: 100%;
     /* min-height: 100vh; */
+    font-family: 'Lexend', sans-serif;
     
 }
 
@@ -25,7 +28,147 @@ video{
     object-fit: cover;
 }
 
+ul{
+    list-style-type: none;
+}
+
 a{
     color: inherit;
     text-decoration: none;
+}
+
+.navbar{
+    background: transparent;
+    padding: 1rem 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    font-size: 2rem;
+    color: #03C988;
+}
+
+.navbar-links-container{
+    display: flex;
+}
+
+.navbar-links-container>li{
+    padding: .5rem;
+    margin-right: 2rem;
+    /* background-color: red; */
+}
+
+.navbar-links-container>li>a{
+    color: white;
+    font-size: 1.25rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-links-container>li>a::after{
+    content: '';
+    display: inline-block;
+    height: 3px;
+    width: 0px;
+    background-color: #03C988;
+    transition: width .2s;
+    position: absolute;
+    bottom: 0;
+    top: 100%;
+    text-align: center;
+}
+
+.navbar-links-container>li>a:hover::after{
+    width: 30px;
+}
+
+.sign-in-btn{
+    background: transparent;
+    border: none;
+    font-family: 'Lexend', sans-serif;
+    border-radius: 20px;
+    padding: 10px 25px;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background-color: #03C988;
+    color: white;
+}
+
+.signup-wrapper{
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-close-btn{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+}
+
+.signup{
+    width: 600px;
+    height: 600px;
+    box-shadow: 0px 1px 49px -11px rgba(0,0,0,0.37);
+    border-radius: 1rem;
+}
+
+.close-btn{
+    color: red;
+    font-size: 5rem;
+}
+
+.signup-close-btn{
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    z-index: 50000;
+    transform: rotate(45deg);
+    border: 3px solid #B9BEC7;
+    transition: .3s;
+}
+
+
+.signup-close-btn::before{
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 3px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #B9BEC7;
+    transform: rotate(45deg) translate(10px, -8px);
+    transition: .2s;
+    transform: translate(-50%,-50%);
+    border-radius: 4px;
+    
+}
+.signup-close-btn::after{
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #B9BEC7;
+    transition: .2s;
+    transform: translate(-50%,-50%);
+    border-radius: 4px;
+}
+
+.signup-close-btn:hover{
+    transform: rotate(135deg);
 }

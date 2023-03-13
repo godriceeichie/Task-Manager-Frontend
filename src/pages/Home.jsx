@@ -6,7 +6,6 @@ import MainContent from './MainContent';
 const Home = () => {
     return (
         <>
-            <Navbar />
             <Outlet />
         </>
     );
