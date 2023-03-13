@@ -2,12 +2,11 @@ import React from 'react';
 
 const SignUp = () => {
     return (
-        <div>
+        <section className='signup'>
             <h1>
-                Sign up for FREE <br />
-                <span>and start using ClickUp in seconds!</span>
+                Sign up for FREE
             </h1>
-        </div>
+        </section>
     );
 }
 
