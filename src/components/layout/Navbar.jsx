@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ url }) => {
+    console.log(url)
+    
     return (
-        <nav className='navbar'>
+        <nav className='navbar' style={{backgroundColor: (url !== '') ? 'white' : 'transparent'}}>
             <h1 className='logo'>
                 <Link to={'/'}>Slick</Link>
             </h1>

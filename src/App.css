@@ -16,7 +16,7 @@ body{
 .main-content{
     width: 100%;
     height: 100vh;
-    background-image: url(assets/img/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner.jpg);
+    background: url(assets/img/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -32,7 +32,7 @@ a{
 }
 
 .navbar{
-    background: transparent;
+    /* background: transparent; */
     padding: 1rem 6rem;
     display: flex;
     justify-content: space-between;
@@ -91,6 +91,12 @@ a{
     letter-spacing: 1px;
     background-color: #03C988;
     color: white;
+    transition: .3s ease-out;
+}
+
+.sign-in-btn:hover{
+    transform: translateY(2px);
+    box-shadow: 0px 23px 31px -11px rgba(0,0,0,0.29);
 }
 
 .signup-wrapper{
@@ -102,10 +108,24 @@ a{
 }
 
 .signup{
-    width: 600px;
-    height: 600px;
+    width: 550px;
+    height: 550px;
     box-shadow: 0px 1px 49px -11px rgba(0,0,0,0.37);
     border-radius: 1rem;
+    padding: 2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    gap: 2rem;
+}
+
+.signup-heading{
+    background: linear-gradient(to right, rgba(220,255,82,1) 0%, rgba(3,201,136,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    font-size: 2rem;
+
 }
 
 .signup-close-btn{
@@ -154,4 +174,79 @@ a{
 
 .signup-close-btn:hover{
     transform: rotate(135deg);
+}
+
+.email-box-enter {
+opacity: 0;
+transform: translateX(-50%);
+}
+
+.email-box-enter-active {
+opacity: 1;
+transform: translateX(0%);
+transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+}
+
+.email-box-exit {
+opacity: 1;
+transform: translateX(0%);
+}
+
+.email-box-exit-active {
+opacity: 0;
+transform: translateX(-50%);
+transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+}
+
+.password-box-enter {
+    opacity: 0;
+    transform: translateY(50%);
+}
+
+.password-box-enter-active {
+    opacity: 1;
+    transform: translateY(0%);
+    transition: opacity 500ms ease-in-out, transform 500ms ease-in-out 1s;
+}
+
+.password-box-exit {
+    opacity: 1;
+    transform: translateY(0%);
+}
+
+.password-box-exit-active {
+    opacity: 0;
+    transform: translateY(50%);
+    transition: opacity 500ms ease-in-out, transform 500ms ease-in-out 1s;
+}
+  
+
+.signup-button-enter {
+opacity: 0;
+transform: translateY(50%);
+}
+
+.signup-button-enter-active {
+opacity: 1;
+transform: translateY(0%);
+transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+}
+
+.signup-button-exit {
+opacity: 1;
+transform: translateY(0%);
+}
+
+.signup-button-exit-active {
+opacity: 0;
+transform: translateY(50%);
+transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+}
+
+.mantine-PasswordInput-wrapper:focus{
+border-color: #03C988;
+}
+
+.authFormContainer form .mantine-PasswordInput-wrapper .mantine-Password-input:focus{
+    outline: 3px solid red;
 }

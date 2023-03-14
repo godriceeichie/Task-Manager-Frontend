@@ -1,4 +1,4 @@
-// import Hero from "./hero/Hero";
-import Navbar from "./layout/Navbar";
 
-export default { Navbar}
+export { default as Navbar } from "./layout/Navbar";
+
+export { default as Hero} from './container/Hero'

@@ -1,8 +1,6 @@
-import SignUp from "./sign up/SignUp";
-import Home from './Home';
-import MainContent from "./MainContent";
-import Pricing from "./Pricing";
-import About from "./About";
-import Contact from "./Contact";
-
-export default { SignUp, Home, MainContent, Pricing, About, Contact }
+export { default as Home } from './Home';
+export { default as MainContent } from './MainContent';
+export { default as SignUp } from './sign up/SignUp';
+export { default as Pricing } from './Pricing';
+export { default as Contact } from './Contact';
+export { default as About } from './About';

@@ -1,13 +1,19 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
-import MainContent from './MainContent';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
+import { Hero, Navbar } from '../components';
 
 const Home = () => {
+    // const { id } = useParams()
+    const location = useLocation()
+    const path = location.pathname.split('/')[1]
+    // console.log(path)
     return (
-        <div>
-            {/* <h1>red</h1> */}
-            <Outlet />
-        </div>
+        <>
+            <Hero url={path}>
+                <Navbar url={path}/>
+                <Outlet />
+            </Hero>
+        </>
     );
 }
 
