@@ -6,36 +6,49 @@ import { CSSTransition } from "react-transition-group";
 import { MdOutlineVisibilityOff, MdOutlineVisibility } from 'react-icons/md'
 
 const SignUp = () => {
+    const [showUsernameBox, setShowUsernameBox] = useState(false);
     const [showEmailBox, setShowEmailBox] = useState(false);
-    const [showPasswordBox, setShowPasswordBox] = React.useState(false);
+    const [showPasswordBox, setShowPasswordBox] = useState(false);
     const [showSignupButton, setShowSignupButton] = useState(false);
 
     useEffect(() => {
         setTimeout(() => {
-            setShowEmailBox(true);
+            setShowUsernameBox(true);
         }, 1000);
+        setTimeout(() => {
+            setShowEmailBox(true);
+        }, 1500);
 
         setTimeout(() => {
             setShowPasswordBox(true);
-        }, 1500);
+        }, 2000);
 
         // Set a timer to show the sign-up button after 1.5 seconds
         setTimeout(() => {
             setShowSignupButton(true);
-        }, 2000);
+        }, 2500);
     }, []);
     return (
         <section className='signup-wrapper'>
             <Link to={'/'} className='signup-close-btn'></Link>
             <form className="signup">
                 <h1 className='signup-heading'>Sign Up for Slick</h1>
-                <TextInput
-                    placeholder="Your name"
-                    label="Full name"
-                    radius="lg"
-                    size="md"
-                    withAsterisk
-                />
+                <CSSTransition
+                    in={showUsernameBox}
+                    timeout={500}
+                    classNames="username-box"
+                    unmountOnExit
+                >
+                    <TextInput
+                        placeholder="Your name"
+                        label="Full name"
+                        radius="lg"
+                        size="md"
+                        withAsterisk
+                    />
+                </CSSTransition>
+
+                
                 <CSSTransition
                     in={showEmailBox}
                     timeout={500}

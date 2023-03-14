@@ -176,6 +176,29 @@ a{
     transform: rotate(135deg);
 }
 
+.username-box-enter {
+    opacity: 0;
+    transform: translateY(-50%);
+}
+
+.username-box-enter-active {
+    opacity: 1;
+    transform: translateY(0%);
+    transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+}
+
+.username-box-exit {
+    opacity: 1;
+    transform: translateY(0%);
+}
+
+.username-box-exit-active {
+    opacity: 0;
+    transform: translateY(-50%);
+    transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+}
+
+
 .email-box-enter {
 opacity: 0;
 transform: translateX(-50%);
@@ -200,24 +223,24 @@ transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
 
 .password-box-enter {
     opacity: 0;
-    transform: translateY(50%);
+    transform: translateX(50%);
 }
 
 .password-box-enter-active {
     opacity: 1;
-    transform: translateY(0%);
-    transition: opacity 500ms ease-in-out, transform 500ms ease-in-out 1s;
+    transform: translateX(0%);
+    transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
 }
 
 .password-box-exit {
     opacity: 1;
-    transform: translateY(0%);
+    transform: translateX(0%);
 }
 
 .password-box-exit-active {
     opacity: 0;
-    transform: translateY(50%);
-    transition: opacity 500ms ease-in-out, transform 500ms ease-in-out 1s;
+    transform: translateX(50%);
+    transition: opacity 500ms ease-in-out, transform 500ms ease-in-out ;
 }
   
 
