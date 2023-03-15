@@ -1,4 +1,4 @@
-export { default as SignIn } from './SignIn';
+export { default as Login } from './Login';
 export { default as Home } from './Home';
 export { default as MainContent } from './MainContent';
 export { default as SignUp } from './sign up/SignUp';
