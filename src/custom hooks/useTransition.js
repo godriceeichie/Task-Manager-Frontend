@@ -15,23 +15,23 @@ const useTransition = () => {
         }, 1000);
         setTimeout(() => {
             setShowUsernameBox(true);
-        }, 1500);
+        }, 1300);
         setTimeout(() => {
             setShowEmailBox(true);
-        }, 2000);
+        }, 1600);
 
         setTimeout(() => {
             setShowPasswordBox(true);
-        }, 2500);
+        }, 1900);
 
         // Set a timer to show the sign-up button after 1.5 seconds
         setTimeout(() => {
             setShowSignupButton(true);
-        }, 3000);
+        }, 2200);
 
         setTimeout(() => {
             setShowSignedUp(true);
-        }, 3500);
+        }, 2500);
     }, []);
     return { showUsernameBox, showEmailBox, showPasswordBox, showSignupButton, showSignedUp, showSignupHeading }
 }

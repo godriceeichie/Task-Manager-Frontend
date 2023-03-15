@@ -1,10 +1,10 @@
 import React from 'react';
-import { Navbar } from '../components';
+import { Hero } from '../components';
 
 const MainContent = () => {
     return (
         <main >
-            {/* <Navbar /> */}
+            <Hero />
         </main>
     );
 }

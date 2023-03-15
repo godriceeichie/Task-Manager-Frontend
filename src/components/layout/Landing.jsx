@@ -1,7 +1,7 @@
 import React from 'react';
 import bgImg from '../../assets/img/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner.jpg'
 
-const Hero = ({children, url}) => {
+const Landing = ({children, url}) => {
     const background = { background : (url !== '') ? 'white' : `url(${bgImg})`}
     return (
         <div className='main-content' style={background}>
@@ -10,4 +10,4 @@ const Hero = ({children, url}) => {
     );
 }
 
-export default Hero;
+export default Landing;

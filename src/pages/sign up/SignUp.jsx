@@ -85,7 +85,7 @@ const SignUp = () => {
                 >
                     <Button color="green" styles={(theme) => ({root: {
                         width: rem(150),
-                        height: rem(100),
+                        height: rem(50),
                         fontSize: rem(19),
                         alignSelf: 'center'
                     }})}>
@@ -99,7 +99,7 @@ const SignUp = () => {
                     unmountOnExit
                 >
                     <p className='already-signed-up'>Already have an account?&nbsp; 
-                        <Link>Sign in</Link>
+                        <Link to={'/login'}>Login</Link>
                     </p>
                 </CSSTransition>
             </form>

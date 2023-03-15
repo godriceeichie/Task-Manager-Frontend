@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
-import { Hero, Navbar } from '../components';
+import { Landing, Navbar } from '../components';
 
 const Home = () => {
     // const { id } = useParams()
@@ -9,10 +9,10 @@ const Home = () => {
     // console.log(path)
     return (
         <>
-            <Hero url={path}>
+            <Landing url={path}>
                 <Navbar url={path}/>
                 <Outlet />
-            </Hero>
+            </Landing>
         </>
     );
 }
