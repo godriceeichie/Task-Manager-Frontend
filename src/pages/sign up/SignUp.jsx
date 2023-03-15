@@ -1,42 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom'
 import { Input, PasswordInput, Button, rem, TextInput } from '@mantine/core';
 import { AiOutlineMail } from 'react-icons/ai';
 import { CSSTransition } from "react-transition-group";
 import { MdOutlineVisibilityOff, MdOutlineVisibility } from 'react-icons/md'
+import { CloseButton } from '../../components';
+import useTransition from '../../components/custom hooks/useTransition';
 
 const SignUp = () => {
-    const [showSignedUp, setShowSignedUp] = useState(false);
-    const [showUsernameBox, setShowUsernameBox] = useState(false);
-    const [showEmailBox, setShowEmailBox] = useState(false);
-    const [showPasswordBox, setShowPasswordBox] = useState(false);
-    const [showSignupButton, setShowSignupButton] = useState(false);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setShowSignedUp(true);
-        }, 1000);
-        setTimeout(() => {
-            setShowUsernameBox(true);
-        }, 1000);
-        setTimeout(() => {
-            setShowEmailBox(true);
-        }, 1500);
-
-        setTimeout(() => {
-            setShowPasswordBox(true);
-        }, 2000);
-
-        // Set a timer to show the sign-up button after 1.5 seconds
-        setTimeout(() => {
-            setShowSignupButton(true);
-        }, 2500);
-    }, []);
+    const { showSignupHeading, showUsernameBox, showEmailBox, showPasswordBox, showSignupButton, showSignedUp } = useTransition()
+    
     return (
         <section className='signup-wrapper'>
-            <Link to={'/'} className='signup-close-btn'></Link>
+            <CloseButton />
             <form className="signup">
-                <h1 className='signup-heading'>Sign Up for Slick</h1>
+                <CSSTransition
+                    in={showSignupHeading}
+                    timeout={500}
+                    classNames="signup-heading"
+                    unmountOnExit
+                >
+                    <h1 className='signup-heading'>Sign Up for Slick</h1>
+                </CSSTransition>
                 <CSSTransition
                     in={showUsernameBox}
                     timeout={500}
@@ -99,14 +84,16 @@ const SignUp = () => {
                     unmountOnExit
                 >
                     <Button color="green" styles={(theme) => ({root: {
-                        width: rem(100),
+                        width: rem(150),
+                        height: rem(100),
+                        fontSize: rem(19),
                         alignSelf: 'center'
                     }})}>
                         Sign Up
                     </Button>
                 </CSSTransition>        
                 <CSSTransition
-                    in={showSignupButton}
+                    in={showSignedUp}
                     timeout={500}
                     classNames="signed-up"
                     unmountOnExit
