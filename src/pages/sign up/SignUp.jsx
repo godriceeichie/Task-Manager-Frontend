@@ -5,7 +5,7 @@ import { AiOutlineMail } from 'react-icons/ai';
 import { CSSTransition } from "react-transition-group";
 import { MdOutlineVisibilityOff, MdOutlineVisibility } from 'react-icons/md'
 import { CloseButton } from '../../components';
-import useTransition from '../../components/custom hooks/useTransition';
+import useTransition from '../../custom hooks/useTransition';
 
 const SignUp = () => {
     const { showSignupHeading, showUsernameBox, showEmailBox, showPasswordBox, showSignupButton, showSignedUp } = useTransition()
