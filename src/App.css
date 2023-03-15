@@ -266,10 +266,14 @@ transform: translateY(50%);
 transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
 }
 
-.mantine-PasswordInput-wrapper:focus{
-border-color: #03C988;
+.already-signed-up{
+    text-align: center;
 }
 
-.authFormContainer form .mantine-PasswordInput-wrapper .mantine-Password-input:focus{
-    outline: 3px solid red;
+.already-signed-up>a{
+    color: #03C988;
+}
+
+.already-signed-up>a:hover{
+    text-decoration: underline #03C988  ;
 }

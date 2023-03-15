@@ -6,12 +6,16 @@ import { CSSTransition } from "react-transition-group";
 import { MdOutlineVisibilityOff, MdOutlineVisibility } from 'react-icons/md'
 
 const SignUp = () => {
+    const [showSignedUp, setShowSignedUp] = useState(false);
     const [showUsernameBox, setShowUsernameBox] = useState(false);
     const [showEmailBox, setShowEmailBox] = useState(false);
     const [showPasswordBox, setShowPasswordBox] = useState(false);
     const [showSignupButton, setShowSignupButton] = useState(false);
 
     useEffect(() => {
+        setTimeout(() => {
+            setShowSignedUp(true);
+        }, 1000);
         setTimeout(() => {
             setShowUsernameBox(true);
         }, 1000);
@@ -101,7 +105,16 @@ const SignUp = () => {
                         Sign Up
                     </Button>
                 </CSSTransition>        
-                
+                <CSSTransition
+                    in={showSignupButton}
+                    timeout={500}
+                    classNames="signed-up"
+                    unmountOnExit
+                >
+                    <p className='already-signed-up'>Already have an account?&nbsp; 
+                        <Link>Sign in</Link>
+                    </p>
+                </CSSTransition>
             </form>
         </section>
     );
