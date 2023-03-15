@@ -21,12 +21,9 @@ const Navbar = ({ url }) => {
                 </li>
             </ul>
             <div className="auth-buttons">
-                <button className='sign-in-btn'>
-                    <Link to={'/signin'}>Login</Link>
-                </button>
-                <button className='sign-up-btn'>
-                    <Link to={'/signup'}>Get Started</Link>
-                </button>
+                <Link to={'/signin'} className='sign-in-btn'>Login</Link>
+                <Link to={'/signup'} className='sign-up-btn'>Get Started</Link>
+                
             </div>
         </nav>
     );

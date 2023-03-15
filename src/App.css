@@ -80,21 +80,40 @@ a{
     width: 30px;
 }
 
-.sign-up-btn{
-    background: transparent;
-    border: none;
+.auth-buttons{
+    display: flex;
+    gap: 1rem;
+}
+
+.sign-in-btn{
+    /* background-color: rgba(3, 201, 136, .15); */
+    background-color: white;
+    padding: .75rem 1rem;
+    border-radius: .5rem;
+    color: #03C988;
     font-family: 'Lexend', sans-serif;
-    border-radius: 20px;
-    padding: 10px 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: .3s ease-out;
+}
+
+.sign-up-btn{
+    font-family: 'Lexend', sans-serif;
+    border-radius: .5rem;
+    padding: 10px 15px;
     font-size: 17px;
     font-weight: 600;
     letter-spacing: 1px;
     background-color: #03C988;
     color: white;
     transition: .3s ease-out;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.sign-in-btn:hover{
+.sign-up-btn:hover, .sign-in-btn:hover{
     transform: translateY(2px);
     box-shadow: 0px 23px 31px -11px rgba(0,0,0,0.29);
 }
