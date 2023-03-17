@@ -352,6 +352,10 @@ transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
 }
 
 .hero-main-img{
-    /* flex-grow: 1; */
-    background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: 100px;
+    flex-grow: 1;
 }
