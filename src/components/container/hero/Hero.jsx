@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Typed from 'react-typed'
 import dashboardImg from '../../../assets/img/hero-dashboard-img.jpg'
+
 
 const Hero = () => {
     return (
@@ -10,17 +12,19 @@ const Hero = () => {
                     className="typed-text"
                     strings={[
                         "Simplify Your Tasks",
-                        "Exceed Limits",
+                        "Exceed Your Limits",
                         "Achieve Your Goals"
                     ]}
                     typeSpeed={150}
-                    backSpeed={120}
+                    backSpeed={150}
                     loop
                     cursorClassName="typed-cursor"
                 />
+                <Link to={'/signup'} className='sign-up-btn'>Get Started</Link>
             </div>
-            <div className='hero-main-img' style={{backgroundColor: 'red'}}>
-                {/* <img src={dashboardImg} alt="" width={500} className="hero-img" style={{objectFit: 'cover'}}/> */}
+            <div className='hero-main-img' >
+                <img src={dashboardImg} alt="" width={600} className="hero-img" style={{objectFit: 'cover', borderRadius: '8px'}}/>
+                
             </div>
         </section>
     );
