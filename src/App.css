@@ -343,13 +343,15 @@ transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
 }
 .hero-main-text{
     width: 50%;
-    padding-block: 2rem;
-    position: relative;
+    /* padding-block: 2rem; */
+    /* position: relative; */
 }
 
 .hero-main-text .sign-up-btn{
     position: absolute;
     bottom: 0;
+    padding: 1rem;
+    /* margin-top: 1rem; */
 }
 
 .typed-text{
