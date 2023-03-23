@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const Pricing = () => {
+    const [inputValue, setInputValue] = useState("");
+    const previousInputValue = useRef("");
+
+    useEffect(() => {
+        previousInputValue.current = inputValue;
+    }, [inputValue]);
+
     return (
-        <div>
-            <h1>Pricing Page</h1>
-        </div>
+        <>
+            <input
+                type="text"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+            />
+            <h2>Current Value: {inputValue}</h2>
+            <h2>Previous Value: {previousInputValue.current}</h2>
+            
+        </>
     );
 }
 

@@ -1,11 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { BackgroundImage } from '@mantine/core';
-// import bgimg from '../../assets/img/'
 
 const Navbar = ({ url }) => {
     console.log(url)
-    
     return (
         <nav className='navbar' style={{background: (url !== '') ? 'white' : 'linear-gradient(90deg, rgba(31,70,127,1) 0%, rgba(30,70,129,1) 33%, rgba(31,72,128,1) 67%)'}}>
             <h1 className='logo'>
@@ -27,6 +24,13 @@ const Navbar = ({ url }) => {
                 <Link to={'/signup'} className='sign-up-btn'>Get Started</Link>
                 
             </div>
+            <button className='navbar-hamburger-btn'>
+                <div class="navbar-hamburger-wrapper">
+                    <div class="navbar-hamburger-line half-line"></div>
+                    <div class="navbar-hamburger-line"></div>
+                    <div class="navbar-hamburger-line half-line"></div>
+                </div>
+            </button>
         </nav>
     );
 }
