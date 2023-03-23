@@ -33,15 +33,15 @@ const Navbar = ({ url }) => {
             <div className="auth-buttons">
                 <Link to={'/login'} className='sign-in-btn'>Login</Link>
                 <Link to={'/signup'} className='sign-up-btn'>Get Started</Link>
-                
+                <button className='navbar-hamburger-btn' onClick={showHamburgerMenu}>
+                    <div className="navbar-hamburger-wrapper">
+                        <div className="navbar-hamburger-line half-line"></div>
+                        <div className="navbar-hamburger-line"></div>
+                        <div className="navbar-hamburger-line half-line"></div>
+                    </div>
+                </button>
             </div>
-            <button className='navbar-hamburger-btn' onClick={showHamburgerMenu}>
-                <div className="navbar-hamburger-wrapper">
-                    <div className="navbar-hamburger-line half-line"></div>
-                    <div className="navbar-hamburger-line"></div>
-                    <div className="navbar-hamburger-line half-line"></div>
-                </div>
-            </button>
+            
             <HamburgerMenu showHamburgerMenu={toggleMenu}/>
         </nav>
     );
