@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import HamburgerMenu from '../container/HamburgerMenu';
-
+import { Overlay } from '@mantine/core';
 
 const Navbar = ({ url }) => {
     const [toggleMenu, setToggleMenu] = useState(false);
@@ -48,6 +48,7 @@ const Navbar = ({ url }) => {
             </div>
             
             <HamburgerMenu showHamburgerMenu={toggleMenu} closeHamburgerMenu={closeHamburgerMenu}/>
+            {toggleMenu && <Overlay color="#000" opacity={0.5   } />}
         </nav>
     );
 }

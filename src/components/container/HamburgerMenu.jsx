@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 
+
 const HamburgerMenu = ({ showHamburgerMenu, closeHamburgerMenu }) => {
     const display = showHamburgerMenu ? 'show' : ''
     const navbarClass = useRef(' ')
