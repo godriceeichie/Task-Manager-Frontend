@@ -6,8 +6,12 @@ import HamburgerMenu from '../container/HamburgerMenu';
 const Navbar = ({ url }) => {
     const [toggleMenu, setToggleMenu] = useState(false);
     const showHamburgerMenu = () => {
-        setToggleMenu(!toggleMenu)
+        setToggleMenu(true)
         // console.log(toggleMenu);
+    }
+
+    const closeHamburgerMenu = () => {
+        setToggleMenu(false)
     }
 
     // useEffect(() => {
@@ -42,7 +46,7 @@ const Navbar = ({ url }) => {
                 </button>
             </div>
             
-            <HamburgerMenu showHamburgerMenu={toggleMenu}/>
+            <HamburgerMenu showHamburgerMenu={toggleMenu} closeHamburgerMenu={closeHamburgerMenu}/>
         </nav>
     );
 }
