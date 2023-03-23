@@ -3,7 +3,7 @@ import { Hero } from '../components';
 
 const MainContent = () => {
     return (
-        <main >
+        <main className='main-content'>
             <Hero />
         </main>
     );

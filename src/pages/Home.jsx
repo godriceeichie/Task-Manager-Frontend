@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { Landing, Navbar } from '../components';
 
 const Home = () => {
@@ -9,10 +9,8 @@ const Home = () => {
     // console.log(path)
     return (
         <>
-            <Landing url={path}>
-                <Navbar url={path}/>
-                <Outlet />
-            </Landing>
+            <Navbar url={path}/>
+            <Outlet />
         </>
     );
 }
