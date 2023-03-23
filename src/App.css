@@ -30,7 +30,7 @@ a{
 
 .navbar{
     /* background: transparent; */
-    padding: 1.5rem 3rem;
+    padding: 1rem 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -560,14 +560,5 @@ transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
         left: 50%;
         opacity: 1;
     }
-
-    /* .hamburger-menu.show .navbar-links-container{
-        display: block;
-        
-        
-    } */
-
-    .hamburger-menu.show .hamburger-menu-container>.navbar-links-container{
-        
-    }
+    
 }
