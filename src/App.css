@@ -388,7 +388,7 @@ transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
 }
 
 .hamburger-menu{
-    height: 100vh;
+    height: 50vh;
     /* width: 100%; */
     /* width: 50%; */
     position: fixed;
@@ -549,7 +549,7 @@ transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
         width: 26px;
         height: 3px;
         border-radius: 100px;
-        background-color: white;
+        background-color: #03C988;
     }
 
     .navbar-hamburger-line.half-line{
