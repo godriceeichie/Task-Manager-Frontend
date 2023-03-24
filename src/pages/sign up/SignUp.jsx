@@ -87,7 +87,8 @@ const SignUp = () => {
                         width: rem(150),
                         height: rem(50),
                         fontSize: rem(19),
-                        alignSelf: 'center'
+                        alignSelf: 'center',
+                        marginTop: 40
                     }})}>
                         Sign Up
                     </Button>

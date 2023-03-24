@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react'
 const useTransition = () => {
     const [showSignupHeading, setshowSignupHeading] = useState(false);
     const [showUsernameBox, setShowUsernameBox] = useState(false);
-    const [showEmailBox, setShowEmailBox] = useState(false);
+    const [showEmailBox, setShowEmailBox] = useState(false);    
     const [showPasswordBox, setShowPasswordBox] = useState(false);
+    const [showForgottenPassword, setShowForgottenPassword] = useState(false);
     const [showSignupButton, setShowSignupButton] = useState(false);
     const [showSignedUp, setShowSignedUp] = useState(false);
 
@@ -22,9 +23,9 @@ const useTransition = () => {
 
         setTimeout(() => {
             setShowPasswordBox(true);
+            setShowForgottenPassword(true)
         }, 1600);
 
-        // Set a timer to show the sign-up button after 1.5 seconds
         setTimeout(() => {
             setShowSignupButton(true);
         }, 1900);
@@ -33,7 +34,7 @@ const useTransition = () => {
             setShowSignedUp(true);
         }, 2200);
     }, []);
-    return { showUsernameBox, showEmailBox, showPasswordBox, showSignupButton, showSignedUp, showSignupHeading }
+    return { showUsernameBox, showEmailBox, showPasswordBox, showForgottenPassword, showSignupButton, showSignedUp, showSignupHeading }
 }
 
 export default useTransition

@@ -3,12 +3,13 @@ import { CloseButton } from '../components';
 import useTransition from '../custom hooks/useTransition';
 import { CSSTransition } from "react-transition-group";
 import { Input, PasswordInput, Button, rem } from '@mantine/core';
+import { AiOutlineLock } from 'react-icons/ai'
 import { AiOutlineMail } from 'react-icons/ai';
 import { MdOutlineVisibilityOff, MdOutlineVisibility } from 'react-icons/md'
 import { Link } from 'react-router-dom';
 
 const Login = () => {
-    const { showSignupHeading, showEmailBox, showPasswordBox, showSignupButton, showSignedUp } = useTransition()
+    const { showSignupHeading, showEmailBox, showPasswordBox, showForgottenPassword, showSignupButton, showSignedUp } = useTransition()
     return (
         <div className='login-wrapper'>
             <CloseButton />
@@ -45,19 +46,32 @@ const Login = () => {
                     classNames="password-box"
                     unmountOnExit
                 >
-                    <PasswordInput
-                        required
-                        label="Password"
-                        placeholder="Password"
+                    <div className="password-container">
+                        <PasswordInput
+                            required
+                            label="Password"
+                            placeholder="Password"
+                            icon={<AiOutlineLock size="1rem" />}
+                            radius="lg"
+                            size="md"
+                            defaultValue=""
+                            visibilityToggleIcon={({ reveal }) =>
+                                reveal ? <MdOutlineVisibilityOff /> : <MdOutlineVisibility />
+                            }
+                        />
+                        <CSSTransition
+                            in={showForgottenPassword}
+                            timeout={500}
+                            classNames="forgot-password-text"
+                            unmountOnExit
+                        >
                         
-                        radius="lg"
-                        size="md"
-                        defaultValue=""
-                        visibilityToggleIcon={({ reveal }) =>
-                            reveal ? <MdOutlineVisibilityOff /> : <MdOutlineVisibility />
-                        }
-                    />
+                            <Link to={'forgot-password'} className="forgot-password">Forgot Password?</Link>
+                        </CSSTransition>
+                    </div>
+                    
                 </CSSTransition>
+                
                 <CSSTransition
                     in={showSignupButton}
                     timeout={500}
@@ -68,7 +82,8 @@ const Login = () => {
                         width: rem(150),
                         height: rem(50),
                         fontSize: rem(19),
-                        alignSelf: 'center'
+                        alignSelf: 'center',
+                        marginTop: 40,
                     }})}>
                         Login
                     </Button>
