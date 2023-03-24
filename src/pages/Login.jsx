@@ -66,7 +66,7 @@ const Login = () => {
                             unmountOnExit
                         >
                         
-                            <Link to={'forgot-password'} className="forgot-password">Forgot Password?</Link>
+                            <Link to={'/forgot-password'} className="forgot-password-link">Forgot Password?</Link>
                         </CSSTransition>
                     </div>
                     
