@@ -6,14 +6,29 @@ import { CSSTransition } from "react-transition-group";
 import { MdOutlineVisibilityOff, MdOutlineVisibility } from 'react-icons/md'
 import { CloseButton } from '../../components';
 import useTransition from '../../custom hooks/useTransition';
+import { useForm, zodResolver } from '@mantine/form';
+import { signUpSchema } from '../../schema';
 
 const SignUp = () => {
     const { showSignupHeading, showUsernameBox, showEmailBox, showPasswordBox, showSignupButton, showSignedUp } = useTransition()
+
+    const signUpForm = useForm({
+        validate:zodResolver(signUpSchema),
+        initialValues:{
+            username:"",
+            password:"",
+            email:""
+        }
+    })
+
+    function handleSignUpSubmit(data){
+        console.log(data)
+    }       
     
     return (
         <section className='signup-wrapper'>
             <CloseButton />
-            <form className="signup">
+            <form className="signup" onSubmit={signUpForm.onSubmit(data => handleSignUpSubmit(data))}>
                 <CSSTransition
                     in={showSignupHeading}
                     timeout={500}
@@ -29,11 +44,14 @@ const SignUp = () => {
                     unmountOnExit
                 >
                     <TextInput
-                        placeholder="Your name"
-                        label="Full name"
+                        placeholder="Enter username"
+                        label="Username"
                         radius="lg"
                         size="md"
+                        name='username'
                         withAsterisk
+                        {...signUpForm.getInputProps("username")}
+
                     />
                 </CSSTransition>
 
@@ -51,6 +69,9 @@ const SignUp = () => {
                             placeholder="Your email"
                             radius="lg"
                             size="md"
+                            name='email'
+                            {...signUpForm.getInputProps("email")}
+
                         />
                     </Input.Wrapper>
                 </CSSTransition> 
@@ -62,7 +83,7 @@ const SignUp = () => {
                     unmountOnExit
                 >
                     <PasswordInput
-                        required
+                        {...signUpForm.getInputProps("password")}
                         label="Password"
                         placeholder="Password"
                         description="Password must include at least one letter, number and special character"
@@ -72,6 +93,8 @@ const SignUp = () => {
                         visibilityToggleIcon={({ reveal }) =>
                             reveal ? <MdOutlineVisibilityOff /> : <MdOutlineVisibility />
                         }
+                        name='password'
+
                     />
                 </CSSTransition>
 
@@ -89,7 +112,9 @@ const SignUp = () => {
                         fontSize: rem(19),
                         alignSelf: 'center',
                         marginTop: 40
-                    }})}>
+                    }})}
+                    type="submit"
+                    >
                         Sign Up
                     </Button>
                 </CSSTransition>        
