@@ -2,18 +2,31 @@ import React from 'react';
 import { CloseButton } from '../components';
 import useTransition from '../custom hooks/useTransition';
 import { CSSTransition } from "react-transition-group";
-import { Input, PasswordInput, Button, rem } from '@mantine/core';
+import { Input, PasswordInput, Button, rem, TextInput } from '@mantine/core';
 import { AiOutlineLock } from 'react-icons/ai'
 import { AiOutlineMail } from 'react-icons/ai';
 import { MdOutlineVisibilityOff, MdOutlineVisibility } from 'react-icons/md'
 import { Link } from 'react-router-dom';
+import { loginSchema } from '../schema';
+import { useForm, zodResolver } from '@mantine/form';
+
 
 const Login = () => {
     const { showSignupHeading, showEmailBox, showPasswordBox, showForgottenPassword, showSignupButton, showSignedUp } = useTransition()
+    const loginForm = useForm({
+        validate: zodResolver(loginSchema),
+        initialValues: {
+            email: "",
+            password: ""
+        }
+    })
+    const handleLoginSubmit = (data) => {
+        console.log(data);
+    }
     return (
         <div className='login-wrapper'>
             <CloseButton />
-            <form action="post" className='login'>
+            <form action="post" className='login' onSubmit={loginForm.onSubmit(data => handleLoginSubmit(data))}>
                 <CSSTransition
                     in={showSignupHeading}
                     timeout={500}
@@ -29,15 +42,15 @@ const Login = () => {
                     classNames="email-box"
                     unmountOnExit
                 >
-                    <Input.Wrapper label="Email" required>
-                        <Input
+                        <TextInput
                             icon={<AiOutlineMail />}
-                            label="Password"
+                            label="Email"
                             placeholder="Your email"
                             radius="lg"
                             size="md"
+                            name='email'
+                            {...loginForm.getInputProps('email')}
                         />
-                    </Input.Wrapper>
                 </CSSTransition> 
 
                 <CSSTransition
@@ -48,16 +61,16 @@ const Login = () => {
                 >
                     <div className="password-container">
                         <PasswordInput
-                            required
                             label="Password"
                             placeholder="Password"
                             icon={<AiOutlineLock size="1rem" />}
                             radius="lg"
                             size="md"
-                            defaultValue=""
                             visibilityToggleIcon={({ reveal }) =>
                                 reveal ? <MdOutlineVisibilityOff /> : <MdOutlineVisibility />
                             }
+                            name='password'
+                            {...loginForm.getInputProps('password')}
                         />
                         <CSSTransition
                             in={showForgottenPassword}
@@ -66,7 +79,7 @@ const Login = () => {
                             unmountOnExit
                         >
                         
-                            <Link to={'/forgot-password'} className="forgot-password-link">Forgot Password?</Link>
+                            <Link to={'/auth/forgot-password'} className="forgot-password-link">Forgot Password?</Link>
                         </CSSTransition>
                     </div>
                     
@@ -84,7 +97,8 @@ const Login = () => {
                         fontSize: rem(19),
                         alignSelf: 'center',
                         marginTop: 40,
-                    }})}>
+                        
+                    }})} type={'submit'}>
                         Login
                     </Button>
                 </CSSTransition>

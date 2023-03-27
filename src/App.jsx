@@ -1,7 +1,7 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
 // import About from './pages/About'
-import { Home, MainContent, SignUp, About, Contact, Pricing, Login, ForgotPassword } from './pages'
+import { Home, MainContent, SignUp, About, Contact, Pricing, Login, ForgotPassword, Auth } from './pages'
 
 
 function App() {
@@ -15,9 +15,12 @@ function App() {
         <Route path='about' element={<About />}/>
         
       </Route>
-      <Route path='/signup' element={<SignUp />} />
-      <Route path='/login' element={<Login />}/><Route path='forgot-password' element={<ForgotPassword />} />
-      <Route path='forgot-password' element={<ForgotPassword />} />
+      <Route path='/auth' element={<Auth />}>
+        <Route path='signup' element={<SignUp />}/>
+        <Route path='login' element={<Login />}/>
+        <Route path='forgot-password' element={<ForgotPassword />}/>
+      </Route>
+  
     </Routes>
   )
 }

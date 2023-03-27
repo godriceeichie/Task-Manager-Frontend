@@ -332,11 +332,11 @@ a{
     flex-direction: column;
 }
 
-.mantine-Input-wrapper:not(.mantine-PasswordInput-wrapper){
+.mantine-InputWrapper-root:not(.mantine-PasswordInput-root){
     margin-bottom: 1.75rem;
 }
 
-.mantine-PasswordInput-wrapper{
+.mantine-PasswordInput-root{
     margin-bottom: 1rem;
 }
 
@@ -357,7 +357,8 @@ a{
     gap: 1rem;
     background: url(assets/img/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner.jpg);
     background-repeat: no-repeat;
-    height: 90vh;
+    height: 85vh;
+    z-index: -19;
     
 }
 .hero-main-text{
@@ -406,8 +407,7 @@ a{
 
 .hamburger-menu{
     height: 50vh;
-    /* width: 100%; */
-    /* width: 50%; */
+
     position: fixed;
     z-index: 2000;
     left: 100%;
@@ -509,6 +509,11 @@ a{
     text-align: center;
     font-size: 2rem;
     margin-bottom: 2rem;
+}
+
+.forgot-password>a{
+    display: flex;
+    align-items: center;
 }
 @media screen and (max-width: 820px) {
     .hero-section{

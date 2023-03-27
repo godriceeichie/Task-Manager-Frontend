@@ -16,23 +16,23 @@ const useTransition = () => {
         }, 500);
         setTimeout(() => {
             setShowUsernameBox(true);
-        }, 1000);
+        }, 600);
         setTimeout(() => {
             setShowEmailBox(true);
-        }, 1300);
+        }, 700);
 
         setTimeout(() => {
             setShowPasswordBox(true);
             setShowForgottenPassword(true)
-        }, 1600);
+        }, 800);
 
         setTimeout(() => {
             setShowSignupButton(true);
-        }, 1900);
+        }, 900);
 
         setTimeout(() => {
             setShowSignedUp(true);
-        }, 2200);
+        }, 1000);
     }, []);
     return { showUsernameBox, showEmailBox, showPasswordBox, showForgottenPassword, showSignupButton, showSignedUp, showSignupHeading }
 }

@@ -62,18 +62,18 @@ const SignUp = () => {
                     classNames="email-box"
                     unmountOnExit
                 >
-                    <Input.Wrapper label="Email" required>
-                        <Input
-                            icon={<AiOutlineMail />}
-                            label="Password"
-                            placeholder="Your email"
-                            radius="lg"
-                            size="md"
-                            name='email'
-                            {...signUpForm.getInputProps("email")}
+                   
+                    <TextInput
+                        icon={<AiOutlineMail />}
+                        label="Email"
+                        placeholder="Your email"
+                        radius="lg"
+                        size="md"
+                        name='email'
+                        {...signUpForm.getInputProps("email")}
 
-                        />
-                    </Input.Wrapper>
+                    />
+                   
                 </CSSTransition> 
 
                 <CSSTransition
@@ -89,7 +89,6 @@ const SignUp = () => {
                         description="Password must include at least one letter, number and special character"
                         radius="lg"
                         size="md"
-                        defaultValue=""
                         visibilityToggleIcon={({ reveal }) =>
                             reveal ? <MdOutlineVisibilityOff /> : <MdOutlineVisibility />
                         }
@@ -111,7 +110,14 @@ const SignUp = () => {
                         height: rem(50),
                         fontSize: rem(19),
                         alignSelf: 'center',
-                        marginTop: 40
+                        // marginTop: signUpForm.onSubmit(data => {
+                        //     if(data.username.length <= 2){
+                        //         return 0
+                        //     }
+                        //     else{
+                        //         return 100
+                        //     }
+                        // })
                     }})}
                     type="submit"
                     >

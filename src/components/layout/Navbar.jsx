@@ -3,16 +3,8 @@ import { Link } from 'react-router-dom';
 import HamburgerMenu from '../container/HamburgerMenu';
 import { Overlay } from '@mantine/core';
 
-const Navbar = ({ url }) => {
-    const [toggleMenu, setToggleMenu] = useState(false);
-    const showHamburgerMenu = () => {
-        setToggleMenu(true)
-        // console.log(toggleMenu);
-    }
-
-    const closeHamburgerMenu = () => {
-        setToggleMenu(false)
-    }
+const Navbar = ({ url, showHamburgerMenu }) => {
+    
     const linkColor = {color: (url !== '') ? 'black' : 'white'}
     const navbarStyle = {
         background: (url !== '') ? 'white' : 'linear-gradient(90deg, rgba(31,70,127,1) 0%, rgba(30,70,129,1) 33%, rgba(31,72,128,1) 67%)',
@@ -36,8 +28,8 @@ const Navbar = ({ url }) => {
                 </li>
             </ul>
             <div className="auth-buttons">
-                <Link to={'/login'} className='sign-in-btn'>Login</Link>
-                <Link to={'/signup'} className='sign-up-btn'>Get Started</Link>
+                <Link to={'/auth/login'} className='sign-in-btn'>Login</Link>
+                <Link to={'/auth/signup'} className='sign-up-btn'>Get Started</Link>
                 <button className='navbar-hamburger-btn' onClick={showHamburgerMenu}>
                     <div className="navbar-hamburger-wrapper">
                         <div className="navbar-hamburger-line half-line"></div>
@@ -47,8 +39,7 @@ const Navbar = ({ url }) => {
                 </button>
             </div>
             
-            <HamburgerMenu showHamburgerMenu={toggleMenu} closeHamburgerMenu={closeHamburgerMenu}/>
-            {toggleMenu && <Overlay color="#000" opacity={0.5   } />}
+            
         </nav>
     );
 }

@@ -1,13 +1,14 @@
 import React from 'react';
 import { Input, Button, rem } from '@mantine/core';
 import { AiOutlineMail } from 'react-icons/ai';
-import { Navbar } from '../components';
+import { Link } from 'react-router-dom';
+import { AiOutlineArrowRight } from 'react-icons/ai'
 
 
 const ForgotPassword = () => {
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             <div className="forgot-password-wrapper">
            
                 <form action="" method="post" className="forgot-password">
@@ -30,6 +31,10 @@ const ForgotPassword = () => {
                         }})}>
                             Reset Password
                     </Button>
+                    <Link to={'/auth/login'}>
+                        Go Back to Login
+                        <AiOutlineArrowRight />
+                    </Link>
                 </form>
             </div>
         </>
