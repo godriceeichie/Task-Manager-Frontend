@@ -2,6 +2,7 @@ import './App.css'
 import { Routes, Route } from 'react-router-dom'
 // import About from './pages/About'
 import { Home, MainContent, SignUp, About, Contact, Pricing, Login, ForgotPassword, Auth } from './pages'
+import Test from './components/container/Test'
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
         <Route path='login' element={<Login />}/>
         <Route path='forgot-password' element={<ForgotPassword />}/>
       </Route>
-  
+      <Route path='/test' element={<Test />}/>
     </Routes>
   )
 }

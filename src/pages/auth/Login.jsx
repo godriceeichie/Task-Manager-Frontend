@@ -1,13 +1,13 @@
 import React from 'react';
-import { CloseButton } from '../components';
-import useTransition from '../custom hooks/useTransition';
+import { CloseButton } from '../../components';
+import useTransition from '../../custom hooks/useTransition';
 import { CSSTransition } from "react-transition-group";
 import { Input, PasswordInput, Button, rem, TextInput } from '@mantine/core';
 import { AiOutlineLock } from 'react-icons/ai'
 import { AiOutlineMail } from 'react-icons/ai';
 import { MdOutlineVisibilityOff, MdOutlineVisibility } from 'react-icons/md'
 import { Link } from 'react-router-dom';
-import { loginSchema } from '../schema';
+import { loginSchema } from '../../schema';
 import { useForm, zodResolver } from '@mantine/form';
 
 
@@ -109,7 +109,7 @@ const Login = () => {
                     unmountOnExit
                 >
                     <p className='already-signed-up'>Don't have an account?&nbsp; 
-                        <Link to={'/signup'}>Sign up</Link>
+                        <Link to={'/auth/signup'}>Sign up</Link>
                     </p>
                 </CSSTransition>
             </form>

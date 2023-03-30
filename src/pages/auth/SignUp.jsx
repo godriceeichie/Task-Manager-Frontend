@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { Input, PasswordInput, Button, rem, TextInput } from '@mantine/core';
 import { AiOutlineMail } from 'react-icons/ai';
@@ -8,23 +8,43 @@ import { CloseButton } from '../../components';
 import useTransition from '../../custom hooks/useTransition';
 import { useForm, zodResolver } from '@mantine/form';
 import { signUpSchema } from '../../schema';
+import { request } from '../../config';
+
+
 
 const SignUp = () => {
     const { showSignupHeading, showUsernameBox, showEmailBox, showPasswordBox, showSignupButton, showSignedUp } = useTransition()
 
+    const [requestUpdate, setRequestUpdate] = useState({isLoading:false});
+
+
+    useEffect(() => {
+        console.log(requestUpdate)
+    }, [requestUpdate])
+
+
+
     const signUpForm = useForm({
-        validate:zodResolver(signUpSchema),
-        initialValues:{
-            username:"",
-            password:"",
-            email:""
+        validate: zodResolver(signUpSchema),
+        initialValues: {
+            username: "",
+            password: "",
+            email: ""
         }
     })
 
-    function handleSignUpSubmit(data){
+    function handleSignUpSubmit(data) {
         console.log(data)
-    }       
-    
+        setRequestUpdate({ ...requestUpdate, isLoading:true })
+     
+        request.post('/user/create', data)
+            .then(res => 
+                setRequestUpdate({ ...requestUpdate, res, isLoading:false })
+            )
+            .catch(err => setRequestUpdate({ ...requestUpdate, err, isLoading:false }))
+        
+    }
+
     return (
         <section className='signup-wrapper'>
             <CloseButton />
@@ -55,14 +75,14 @@ const SignUp = () => {
                     />
                 </CSSTransition>
 
-                
+
                 <CSSTransition
                     in={showEmailBox}
                     timeout={500}
                     classNames="email-box"
                     unmountOnExit
                 >
-                   
+
                     <TextInput
                         icon={<AiOutlineMail />}
                         label="Email"
@@ -73,8 +93,8 @@ const SignUp = () => {
                         {...signUpForm.getInputProps("email")}
 
                     />
-                   
-                </CSSTransition> 
+
+                </CSSTransition>
 
                 <CSSTransition
                     in={showPasswordBox}
@@ -97,7 +117,7 @@ const SignUp = () => {
                     />
                 </CSSTransition>
 
-                
+
 
                 <CSSTransition
                     in={showSignupButton}
@@ -105,33 +125,28 @@ const SignUp = () => {
                     classNames="signup-button"
                     unmountOnExit
                 >
-                    <Button color="green" styles={(theme) => ({root: {
-                        width: rem(150),
-                        height: rem(50),
-                        fontSize: rem(19),
-                        alignSelf: 'center',
-                        // marginTop: signUpForm.onSubmit(data => {
-                        //     if(data.username.length <= 2){
-                        //         return 0
-                        //     }
-                        //     else{
-                        //         return 100
-                        //     }
-                        // })
-                    }})}
-                    type="submit"
+                    <Button color="green" styles={(theme) => ({
+                        root: {
+                            width: rem(150),
+                            height: rem(50),
+                            fontSize: rem(19),
+                            alignSelf: 'center',
+                        }
+                    })}
+                        type="submit"
+                        loading={requestUpdate.isLoading}
                     >
                         Sign Up
                     </Button>
-                </CSSTransition>        
+                </CSSTransition>
                 <CSSTransition
                     in={showSignedUp}
                     timeout={500}
                     classNames="signed-up"
                     unmountOnExit
                 >
-                    <p className='already-signed-up'>Already have an account?&nbsp; 
-                        <Link to={'/login'}>Login</Link>
+                    <p className='already-signed-up'>Already have an account?&nbsp;
+                        <Link to={'/auth/login'}>Login</Link>
                     </p>
                 </CSSTransition>
             </form>
