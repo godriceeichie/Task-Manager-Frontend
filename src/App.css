@@ -42,7 +42,7 @@ a{
 }
 
 .logo{
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #ECF2FF;
     display: flex;
     align-items: center;
@@ -97,15 +97,15 @@ a{
 }
 
 .sign-in-btn{
-    /* background-color: rgba(3, 201, 136, .15); */
-    background-color: white;
     padding: .5rem 1rem;
     border-radius: .5rem;
-    color: #3E54AC;
     font-family: 'Lexend', sans-serif;
     font-size: 1rem;
     font-weight: 600;
     transition: .3s ease-out;
+    background-color: #655DBB;
+    border: 1px solid white;
+    color: white;
 }
 
 .sign-up-btn{
@@ -115,9 +115,8 @@ a{
     font-size: 17px;
     font-weight: 600;
     letter-spacing: 1px;
-    background-color: #655DBB;
-    border: 1px solid white;
-    color: white;
+    background-color: white;
+    color: #3E54AC;
     transition: .3s ease-out;
     text-align: center;
     display: flex;
@@ -168,7 +167,7 @@ a{
     border-radius: 50%;
     z-index: 50000;
     transform: rotate(45deg);
-    border: 3px solid #03C988;
+    border: 3px solid #6C00FF;
     transition: .3s;
 }
 
@@ -181,7 +180,7 @@ a{
     position: absolute;
     top: 50%;
     left: 50%;
-    background-color: #03C988;
+    background-color: #6C00FF;
     transform: rotate(45deg) translate(10px, -8px);
     transition: .2s;
     transform: translate(-50%,-50%);
@@ -196,7 +195,7 @@ a{
     position: absolute;
     top: 50%;
     left: 50%;
-    background-color: #03C988;
+    background-color: #6C00FF;
     transition: .2s;
     transform: translate(-50%,-50%);
     border-radius: 4px;
@@ -329,12 +328,12 @@ a{
 }
 
 .already-signed-up>a{
-    color: #03C988;
+    color: #655DBB;
     transition: .3s ease-in-out
 }
 
 .already-signed-up>a:hover{
-    text-decoration: underline #03C988  ;
+    text-decoration: underline #655DBB  ;
     transform: translateY(-2px);
     
 }
@@ -371,6 +370,10 @@ a{
     color: #c0c0c0;
 }
 
+.mantine-Button-root{
+    background-color: #6C00FF;
+}
+
 .login__form-ending, .sigup__form-ending{
     display: flex;
     flex-direction: column;
@@ -379,24 +382,92 @@ a{
 }
 
 .forgot-password-link{
-    color: #03C988;
+    color: #655DBB;
     transition: .3s ease-in-out
 }
 
 .forgot-password-link:hover{
-    text-decoration: underline #03C988 ;
+    text-decoration: underline #655DBB;
 }
 
 .hero-section{
     background-color: #655DBB;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* place-content: center;*/
+    /* place-items: center;  */
+    padding: 0rem 2.25rem;
+    gap: 1rem;
+    height: 80svh;
+}
+
+.hero-main-text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.hero-main-heading{
+    font-size: 3.5rem;
+    color: white;
+    width: 100%;
+    line-height: 3.5rem;
+}
+
+.hero-main-heading>span{
+    color: #BFACE2;
+}
+
+.hero-sub-heading{
+    color: white;
+    font-weight: 300;
+    font-size: 1.25rem;
+    margin-top: .5rem;
+}
+
+.hero__signup-container{
+    margin-top: 2.25rem;
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+}
+
+.hero__email{
+    border-radius: .5rem;
+    border: none;
+    height: 2rem;
+    width: 13rem;
+    padding-inline: .5rem;
+}
+
+.hero__email::placeholder{
+
+}
+
+.hero__signup-container>button{
+    background-color: #BFACE2;
+    color: #655DBB;
+    font-weight: 600;
+    padding: .55rem 1rem;
+    border-radius: .5rem;
+    text-align: center;
+    font-size: 1rem;
+    outline: none;
+    
+}
+
+.hero-main-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-img{
     width: 80%;
     max-width: 590px;
     height: auto;
-    object-fit: cover;
-    
+    margin-inline: auto;
 }
 
 .navbar-hamburger-btn{
@@ -550,19 +621,6 @@ a{
         display: none;
     }
 
-    .sign-in-btn{
-        padding: .65rem 1rem;
-        height: fit-content;
-        display: flex;
-        align-items: center;
-    }
-    
-    .sign-up-btn{
-        padding: .65rem 1rem;
-        height: fit-content;
-    }
-    
-
     .navbar-hamburger-btn{
         display: flex;
         width: auto;
@@ -589,7 +647,7 @@ a{
         width: 26px;
         height: 3px;
         border-radius: 100px;
-        background-color: #03C988;
+        background-color: #3E54AC;
     }
 
     .navbar-hamburger-line.half-line{
@@ -618,7 +676,12 @@ a{
         gap: 3rem;
     }
     .hero-main-text{
+        align-items: center;
         text-align: center;
+    }
+
+    .hero-img{
+        width: 50%;
     }
 
 }

@@ -93,7 +93,7 @@ const Login = () => {
                             classNames="signup-button"
                             unmountOnExit
                         >
-                            <Button color="green" styles={(theme) => ({root: {
+                            <Button styles={(theme) => ({root: {
                                 width: rem(150),
                                 height: rem(38),
                                 fontSize: rem(19),

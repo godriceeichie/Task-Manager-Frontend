@@ -14,7 +14,7 @@ const Navbar = ({ url, showHamburgerMenu }) => {
         <nav className='navbar' style={navbarStyle}>
             <h1 className='logo'>
                 <svg width="42" height="43" viewBox="0 0 42 43" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="3.5" y="4" width="35" height="35" fill="white" stroke="#3E54AC" stroke-width="7" />
+                    <rect x="3.5" y="4" width="35" height="35" fill="white" stroke="#3E54AC" strokeWidth="7" />
                 </svg>
 
                 <Link to={'/'}>Slick</Link>
