@@ -356,8 +356,6 @@ a{
     border: 2px solid #03C988 !important;
 }
 
-
-
 .mantine-PasswordInput-root{
     margin-bottom: 1rem;
 }
@@ -394,8 +392,6 @@ a{
     background-color: #655DBB;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    /* place-content: center;*/
-    /* place-items: center;  */
     padding: 0rem 2.25rem;
     gap: 1rem;
     height: 80svh;
@@ -409,10 +405,9 @@ a{
 }
 
 .hero-main-heading{
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
     color: white;
-    width: 100%;
-    line-height: 3.5rem;
+    /* width: 95%; */
 }
 
 .hero-main-heading>span{
@@ -422,7 +417,7 @@ a{
 .hero-sub-heading{
     color: white;
     font-weight: 300;
-    font-size: 1.25rem;
+    font-size: min(5vw, 1.25rem);
     margin-top: .5rem;
 }
 
@@ -436,25 +431,27 @@ a{
 .hero__email{
     border-radius: .5rem;
     border: none;
-    height: 2rem;
+    height: 2.25rem;
     width: 13rem;
     padding-inline: .5rem;
 }
 
 .hero__email::placeholder{
-
+    font-weight: 500;
+    color: #c0c0c0;
 }
 
 .hero__signup-container>button{
-    background-color: #BFACE2;
+    background-color: #fff;
     color: #655DBB;
     font-weight: 600;
-    padding: .55rem 1rem;
+    font-size: clamp(.8rem, 2vw, 1rem);
+    /* padding: .55rem 1rem; */
+    padding: .55em 1em;
     border-radius: .5rem;
     text-align: center;
-    font-size: 1rem;
     outline: none;
-    
+    white-space: nowrap;
 }
 
 .hero-main-img{
@@ -464,7 +461,7 @@ a{
 }
 
 .hero-img{
-    width: 80%;
+    width: 90%;
     max-width: 590px;
     height: auto;
     margin-inline: auto;
@@ -658,6 +655,17 @@ a{
         left: 50%;
         opacity: 1;
     }
+
+    .hero-section{
+        grid-template-columns: 1fr;
+        padding-block: 1rem;
+        gap: 3rem;
+    }
+
+    .hero-main-text{
+        align-items: center;
+        text-align: center;
+    }
     
 }
 
@@ -667,21 +675,32 @@ a{
     .navbar{
         padding-inline: 2rem;
     }
-   .sign-up-btn{
+   .sign-up-btn, .sign-in-btn{
         display: none;
     }
 
     .hero-section{
-        padding: 2.5vw;
+        padding: 1rem;
         gap: 3rem;
-    }
-    .hero-main-text{
-        align-items: center;
-        text-align: center;
     }
 
     .hero-img{
-        width: 50%;
+        width: 80%;
     }
 
+    .hero__signup-container{
+        /* flex-direction: column; */
+    }
+
+}
+
+@media (width <= 370px){
+    .hero-main-heading{
+        font-size: 2rem;
+    }
+
+    .hero__signup-container>input{
+        width: 10rem;
+        height: 2rem;
+    }
 }

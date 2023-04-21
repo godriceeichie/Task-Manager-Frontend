@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 
 
 const Navbar = ({ url, showHamburgerMenu }) => {
-
-    // const linkColor = {color: (url !== '') ? 'black' : 'white'}
     const navbarStyle = {
         background: (url !== '') ? 'white' : '#655DBB',
         boxShadow: (url !== '') ? '0px 2px 25px -3px rgba(0,0,0,0.31)' : 'none'

@@ -19,7 +19,7 @@ const Hero = () => {
             </div>
             <div className='hero-main-img' >
                 <img src={dashboardImg} alt=""  className="hero-img" style={{objectFit: 'cover', borderRadius: '8px'}}/>
-        
+                
             </div>
         </section>
     );
