@@ -1,0 +1,11 @@
+export { default as Dashboard} from './Dashboard';
+export { default as Auth } from './auth/Auth';
+export { default as ForgotPassword } from './auth/ForgotPassword';
+export { default as Login } from './auth/Login';
+export { default as Home } from './Home';
+export { default as MainContent } from './MainContent';
+export { default as SignUp } from './auth/SignUp';
+export { default as Pricing } from './Pricing';
+export { default as Contact } from './Contact';
+export { default as About } from './About';
+
