@@ -20,7 +20,7 @@ function App() {
         <Route path='forgot-password' element={<ForgotPassword />}/>
       </Route>
       <Route path='/dashboard' element={<Dashboard />}>
-        <Route path='home' index element={<DashboardHome />}/>
+        <Route index element={<DashboardHome />}/>
       </Route>
     </Routes>
   )

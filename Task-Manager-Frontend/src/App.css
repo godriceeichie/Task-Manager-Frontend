@@ -407,7 +407,7 @@ a{
 .hero-main-heading{
     font-size: clamp(2rem, 5vw, 3.5rem);
     color: white;
-    /* width: 95%; */
+    line-height: clamp(3rem, 5vw, 4rem);
 }
 
 .hero-main-heading>span{
@@ -602,7 +602,6 @@ a{
     background-color: #F5F8FF;
     display: flex;
     height: 100dvh;
-    font-family: 'Poppins';
 }
 
 .dashboardSidebar{
@@ -622,6 +621,11 @@ a{
     padding: 38px 70px;
     gap: 16px;
 
+}
+
+.dashboardSidebar>nav{
+    display: flex;
+    flex-direction: column;
 }
 
 
