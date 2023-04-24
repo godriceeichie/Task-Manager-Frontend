@@ -619,14 +619,10 @@ a{
 .dashboardSidebar__header{
     display: flex;
     align-items: center;
-    padding: 38px 70px;
+    padding: 1rem 0;
+    justify-content: center;
     gap: 16px;
 
-}
-
-.dashboardSidebar>nav{
-    /* padding-block: 40px; */
-    /* height: 100%; */
 }
 
 .dashboardSidebar__links-container{
@@ -658,7 +654,7 @@ a{
     padding-left: 4rem;
 }
 
-.dashboardSidebar__main-container>li>a>svg{
+.dashboardSidebar__main-container>li>a>img, .dashboardSidebar__main-container>li>a>svg{
     margin-right: 1rem;
 }
 

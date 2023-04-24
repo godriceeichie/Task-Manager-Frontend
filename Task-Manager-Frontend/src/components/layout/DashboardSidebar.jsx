@@ -1,7 +1,21 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import SidebarLinks from '../../data/SidebarLinks'
+
 
 function DashboardSidebar() {
+  const SidebarLink = useRef()
+  const [linkIndex, setlinkIndex] = useState();
+
+  const handleClick = (index) => {
+    setlinkIndex(index)
+    console.log(index)
+  }
+
+  useEffect(() => {
+   
+  })
+
   return (
     <aside className='dashboardSidebar'>
         <header className='dashboardSidebar__header'>
@@ -15,36 +29,18 @@ function DashboardSidebar() {
         <nav>
           <ul className='dashboardSidebar__links-container'>
             <div className="dashboardSidebar__main-container">
-              <li className='active'>
-                <Link>
-                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
-                  <span className='dashboardSidebar__nav-name'>Home</span>
-                </Link>
-              </li>
-              <li>
-                <Link>
-                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
-                  <span className='dashboardSidebar__nav-name'>Projects</span>
-                </Link>
-              </li>
-              <li>
-                <Link>
-                  <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><path d="M14,2H6C4.9,2,4.01,2.9,4.01,4L4,20c0,1.1,0.89,2,1.99,2H18c1.1,0,2-0.9,2-2V8L14,2z M18,20H6V4h7v5h5V20z M8.82,13.05 L7.4,14.46L10.94,18l5.66-5.66l-1.41-1.41l-4.24,4.24L8.82,13.05z"/></g></svg>
-                  <span className='dashboardSidebar__nav-name'>Tasks</span>
-                </Link>
-              </li>
-              <li>
-                <Link>
-                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><path d="M19,4h-1V2h-2v2H8V2H6v2H5C3.89,4,3.01,4.9,3.01,6L3,20c0,1.1,0.89,2,2,2h14c1.1,0,2-0.9,2-2V6C21,4.9,20.1,4,19,4z M19,20 H5V10h14V20z M19,8H5V6h14V8z M9,14H7v-2h2V14z M13,14h-2v-2h2V14z M17,14h-2v-2h2V14z M9,18H7v-2h2V18z M13,18h-2v-2h2V18z M17,18 h-2v-2h2V18z"/></g></svg>
-                  <span className='dashboardSidebar__nav-name'>Calendar</span>
-                </Link>
-              </li>
-              <li>
-                <Link>
-                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 4h16v12H5.17L4 17.17V4m0-2c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H4zm2 10h8v2H6v-2zm0-3h12v2H6V9zm0-3h12v2H6V6z"/></svg>
-                  <span className='dashboardSidebar__nav-name'>Messages</span>
-                </Link>
-              </li>
+              {
+                SidebarLinks.map(({title, icon}, index)=> {
+                  return(
+                    <li onClick={() => handleClick(index)} key={index} ref={SidebarLink} className={(linkIndex === index) ? 'active' : ''}>
+                      <Link>
+                        <img src={icon} alt=""/>
+                        <span className='dashboardSidebar__nav-name'>{title}</span>
+                      </Link>
+                    </li>
+                  )
+                })
+              }
             </div>
             <div className='dashboardSidebar__main-container'>
               <li>
@@ -55,7 +51,7 @@ function DashboardSidebar() {
               </li>
               <li>
                 <Link>
-                  <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><path d="M17,8l-1.41,1.41L17.17,11H9v2h8.17l-1.58,1.58L17,16l4-4L17,8z M5,5h7V3H5C3.9,3,3,3.9,3,5v14c0,1.1,0.9,2,2,2h7v-2H5V5z"/></g></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><path d="M17,8l-1.41,1.41L17.17,11H9v2h8.17l-1.58,1.58L17,16l4-4L17,8z M5,5h7V3H5C3.9,3,3,3.9,3,5v14c0,1.1,0.9,2,2,2h7v-2H5V5z"/></g></svg>
                   <span className='dashboardSidebar__nav-name'>Log out</span>
                 </Link>
               </li>
