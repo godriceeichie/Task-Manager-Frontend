@@ -630,6 +630,7 @@ a{
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    margin-top: 1rem;
 }
 
 
@@ -651,10 +652,12 @@ a{
 .dashboardSidebar__main-container>li>a{
     display: flex;
     align-items: center;
-    padding-left: 4rem;
+    width: 50%;
+    margin-inline: auto;
+    /* background-color: red; */
 }
 
-.dashboardSidebar__main-container>li>a>img, .dashboardSidebar__main-container>li>a>svg{
+.dashboardSidebar__main-container>li>a>img, .dashboardSidebar__main-container>a>svg{
     margin-right: 1rem;
 }
 
@@ -663,6 +666,93 @@ a{
     vertical-align: middle;
 }
 
+.dashboardMain{
+    width: 100%;
+}
+
+.dashboardHeader{
+    background-color: #FFFFFF;
+    border-radius: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 20px;
+    margin-top: 1rem;
+    width: 95%;
+    margin-inline: auto;
+    height: 50px;
+}
+
+.dashboardHeader-welcomeText{
+    font-size: .5rem;
+}
+
+.dashboardHeader__searchbar{
+    background: #F5F8FF;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    padding: .25rem 1rem;
+    gap: 1rem;
+    width: 30%
+}
+
+.dashboardHeader__searchbar>input{
+    border: none;
+    outline: none;
+    background: transparent;
+    flex: 1;
+}
+
+.dashboardHeader__userInfo{
+    display: flex;
+}
+
+.dashboardHeader_notification{
+    border-radius: 12px;
+    background: #EFF4FF;
+    padding: .45rem .5rem;
+    position: relative;
+}
+
+.notification-badge{
+    display: none;
+}
+
+.notification-badge.active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    color: white;
+    text-align: center;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    font-size: .75rem;
+    position: absolute;
+    top: 10%;
+    right: 10%;
+}
+
+.dashboardHeader__userInfo>.userInfo__details{
+    display: flex;
+    font-weight: 500;
+    font-size: .75rem;
+    letter-spacing: 0.005em;
+}
+
+.dashboardHeader__userInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+.dashboardHeader__userInfo>.userInfo__details h5{
+    font-size: .6rem;
+    color: #888;
+}
 
 @container(750px <= width <= 1100px){
     .hero-main-text{

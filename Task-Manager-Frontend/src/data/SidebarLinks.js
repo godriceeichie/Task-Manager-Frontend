@@ -8,28 +8,24 @@ import logOutIcon from '../assets/img/logout_black_24dp.svg'
 const SidebarLinks = [
     {
         title: 'Home',
-        icon: homeIcon
+        icon: homeIcon,
+        path: '/dashboard'
     },
     {
         title: 'Projects',
-        icon: projectIcon
+        icon: projectIcon,
+        path: '/dashboard/projects'
     },
     {
         title: 'Tasks',
-        icon: taskIcon
+        icon: taskIcon,
+        path: '/dashboard/tasks'
     },
     {
         title: 'Messages',
-        icon: messageIcon
-    },
-    // {
-    //     title: 'Settings',
-    //     icon: settingsIcon
-    // },
-    // {
-    //     title: 'Log out',
-    //     icon: logOutIcon
-    // }
+        icon: messageIcon,
+        path: '/dashboard/messages'
+    }
 ]
 
 export default SidebarLinks
