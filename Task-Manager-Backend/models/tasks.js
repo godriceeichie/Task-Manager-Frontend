@@ -9,12 +9,12 @@ const taskSchema = new Schema({
     },
     description: {
         type: String,
-        // required: true
+        required: true
     },
-    // category: {
-    //     type: String,
-    //     required: true
-    // }
+    category: {
+        type: String,
+        required: true
+    }
 
 }, { timestamps: true })
 

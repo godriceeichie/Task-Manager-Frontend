@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import gridIcon from '../../assets/img/grid_view_black_24dp.svg'
 import listIcon from '../../assets/img/view_list_black_24dp.svg'
-
+import moreVertIcon from '../../assets/img/more_vert_black_24dp.svg'
+import { AvatarGroup } from '../../components';
+import commentIcon from '../../assets/img/comment_black_24dp.svg'
 
 const DashboardTasks = () => {
     const [toggleTaskView, setToggleTaskView] = useState(false);
@@ -38,27 +40,36 @@ const DashboardTasks = () => {
                 </div>
                 <button className='dashboardTasks__newTask'>+ New Task</button>
             </header>
-            <main className="dashboardTasks__grid-container">
-                <div className='dashboardTasks__grid-items'>
+            <main className="dashboardTasks__grid">
+                <div className='dashboardTasks__gridContainer'>
                     <header>
-                        <h2 className='dashboardTasks__grid-heading'>
+                        <h2 className='dashboardTasks__gridHeading'>
                             <span></span>
                             Todo
                         </h2>
                         <span className='dashboardTasks__grid-itemsLength'>{ tasks ? `(${tasks.length})` : `(0)`}</span>
                     </header>
                     { tasks && tasks.map((task) => {
-                        return(
-                            <div>
+                        return( 
+                            <div className='dashboardTasks__grid-items'>
                                 <header>
-                                    <p></p>
+                                    <span className='dashboardTasks__grid-itemsCategory'>{task.category}</span>
+                                    <img src={moreVertIcon} alt="" />
                                 </header>
+                                <div className='dashboardTasks__grid-itemsContent'>
+                                    <h3>{task.name}</h3>
+                                    <p>{task.description}</p>
+                                </div>
+                                <div style={{display: 'flex', justifyContent:'space-between'}}>
+                                    <AvatarGroup />
+                                    <img src={commentIcon} alt=""/>
+                                </div>
                             </div>
                         )
                     })}
                 </div>
-                <div>e</div>
-                <div>d</div>
+                <div style={{backgroundColor: 'blue'}}>e</div>
+                <div style={{backgroundColor: 'green'}}>d</div>
             </main> 
         </section>
     );
