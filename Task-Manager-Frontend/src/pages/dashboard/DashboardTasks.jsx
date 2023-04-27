@@ -13,7 +13,7 @@ const DashboardTasks = () => {
         setToggleTaskView(!toggleTaskView);
     };
 
-    const {render} = NewTaskBtn()
+    const { render } = NewTaskBtn()
 
     useEffect(() => {
         const fetchTasks = async () => {

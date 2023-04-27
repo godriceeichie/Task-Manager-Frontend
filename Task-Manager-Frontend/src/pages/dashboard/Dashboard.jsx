@@ -7,6 +7,7 @@ function Dashboard() {
     <div className='dashboard'>
         <DashboardSidebar />
         <DashboardMainContent>
+          <CreateTask />
           <DashboardHeader />
           <Outlet />
         </DashboardMainContent>
