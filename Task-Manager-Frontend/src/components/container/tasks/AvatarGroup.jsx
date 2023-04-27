@@ -1,20 +1,20 @@
 import { Avatar, Tooltip } from '@mantine/core';
-import girlPic from '../../assets/img/demo-girl-pic.jpg'
-import boyPic from '../../assets/img/demo-boy-pic.jpg'
-import manPic from '../../assets/img/demo-man-pic.jpg'
+import girlPic from '../../../assets/img/demo-girl-pic.jpg'
+import boyPic from '../../../assets/img/demo-boy-pic.jpg'
+import manPic from '../../../assets/img/demo-man-pic.jpg'
 
 function AvatarGroup() {
   return (
     <Tooltip.Group openDelay={300} closeDelay={100}>
       <Avatar.Group spacing="sm">
         <Tooltip label="Salazar Troop" withArrow>
-          <Avatar src={girlPic} radius="xl" size={30} />
+          <Avatar src={girlPic} radius="xl" size={25} />
         </Tooltip>
         <Tooltip label="Bandit Crimes" withArrow>
-          <Avatar src={boyPic} radius="xl" size={30} />
+          <Avatar src={boyPic} radius="xl" size={25} />
         </Tooltip>
         <Tooltip label="Jane Rata" withArrow>
-          <Avatar src={manPic} radius="xl" size={30} />
+          <Avatar src={manPic} radius="xl" size={25} />
         </Tooltip>
         <Tooltip
           withArrow
@@ -25,7 +25,7 @@ function AvatarGroup() {
             </>
           }
         >
-          <Avatar radius="xl">+2</Avatar>
+          <Avatar radius="xl" size={25}>+2</Avatar>
         </Tooltip>
       </Avatar.Group>
     </Tooltip.Group>

@@ -1,5 +1,6 @@
-export { default as AvatarGroup } from "./container/AvatarGroup";
-
+export { default as NewTaskBtn } from "./container/tasks/NewTaskBtn";
+export { default as CreateTask } from "./container/tasks/CreateTask";
+export { default as AvatarGroup } from "./container/tasks/AvatarGroup";
 export { default as DashboardHeader } from "./layout/DashboardHeader";
 export { default as DashboardMainContent } from "./layout/DashboardMainContent";
 export { default as HamburgerMenu } from "./container/HamburgerMenu";

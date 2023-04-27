@@ -766,7 +766,7 @@ a{
 .dashboardTasks{
     width: 95%;
     margin-inline: auto;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     height: 100%;
     
 }
@@ -782,6 +782,7 @@ a{
     position: sticky;
     top: 66px;
     background-color: #F5F8FF;
+    padding-block: 1rem;
 }
 
 .dashboardTasks__displayView{
@@ -807,6 +808,7 @@ a{
     color: white;
     padding: .5rem 1rem;
     border-radius: .25rem;
+    font-weight: 600;
 }
 
 .dashboardTasks__displayView img{
@@ -832,6 +834,7 @@ a{
     display: flex;
     align-items: center;
     gap: .5rem;
+    font-size: 1.25rem;
 }
 
 .dashboardTasks__gridHeading>span{
@@ -840,6 +843,14 @@ a{
     width: 10px;
     height: 10px;
     border-radius: 50%;
+}
+
+.dashboardTasks__gridHeading>.inProgress{
+    background-color: #EBB02D;
+}
+
+.dashboardTasks__gridHeading>.completed{
+    background-color: #02790D;
 }
 
 .dashboardTasks__grid-itemsLength{
@@ -863,13 +874,26 @@ a{
 }
 
 .dashboardTasks__grid-itemsCategory{
-    background-color: #FA9884;
-    color: #E74646;
     display: inline-block;
     padding: .35rem .5rem;
     border-radius: 1rem;
     font-size: .75rem;
     font-weight: 500;
+}
+
+.dashboardTasks__grid-itemsCategory.todo{
+    background-color: #FA9884;
+    color: #E74646;
+}
+
+.dashboardTasks__grid-itemsCategory.inProgress{
+    background-color: #F7DB6A;
+    color: #EBB02D;
+}
+
+.dashboardTasks__grid-itemsCategory.completed{
+    background-color: #03C988;
+    color: #02790D;
 }
 
 .dashboardTasks__grid-itemsContent>h3{
@@ -880,10 +904,6 @@ a{
     font-size: .75rem;
     color: #888;
 }
-
-/* .dashboardTasks__grid-itemsContent{
-    marg
-} */
 
 @container(750px <= width <= 1100px){
     .hero-main-text{
