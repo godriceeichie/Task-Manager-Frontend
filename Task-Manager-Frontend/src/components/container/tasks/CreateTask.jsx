@@ -1,12 +1,16 @@
 import { CloseButton, Overlay } from '@mantine/core';
-import React from 'react';
+import React, { useEffect } from 'react';
 import NewTaskBtn from './NewTaskBtn';
 
-const CreateTask = () => {
-    const {viewTaskForm} = NewTaskBtn()
+const CreateTask = ({viewTaskForm}) => {
+    // const {viewTaskForm} = NewTaskBtn()
+    // console.log(viewTaskForm)
     return (
-        <aside className='dashboardTaskForm'>
-            <header>
+        <aside className={viewTaskForm ? 'dashboardCreateTask active' : 'dashboardCreateTask'}>
+            {
+                viewTaskForm && <Overlay opacity={0.5} fixed={true}/>
+            }
+            <header className='dashboardCreateTask__header'>
                 <h1>Create New Task</h1>
                 <p>Fill out the inputs to create a new task</p>
                 <span></span>

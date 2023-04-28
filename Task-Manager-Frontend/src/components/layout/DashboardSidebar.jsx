@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import SidebarLinks from '../../data/SidebarLinks'
 import MinorSidebarLinks from '../../data/MinorSidebarLinks'
+
 
 function DashboardSidebar() {
   const SidebarLink = useRef()
@@ -11,11 +12,6 @@ function DashboardSidebar() {
     setlinkIndex(index)
     console.log(index)
   }
-
-  useEffect(() => {
-    sidebarLinkClick(0)
-   
-  }, [])
 
   return (
     <aside className='dashboardSidebar'>
@@ -33,11 +29,11 @@ function DashboardSidebar() {
               {
                 SidebarLinks.map(({title, icon, path}, index)=> {
                   return(
-                    <li onClick={() => sidebarLinkClick(index)} key={index} className={(linkIndex === index) ? 'active' : ''}>
-                      <Link to={path}>
+                    <li key={index}>
+                      <NavLink to={path} activeClassName='active' exact={path === '/dashboard/'}>
                         <img src={icon} alt=""/>
                         <span className='dashboardSidebar__nav-name'>{title}</span>
-                      </Link>
+                      </NavLink>
                     </li>
                   )
                 })

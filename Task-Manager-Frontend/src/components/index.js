@@ -1,3 +1,6 @@
+export { default as CompletedTasks } from './container/tasks/CompletedTasks';
+export { default as InProgressTasks } from './container/tasks/InProgressTasks';
+export { default as TodoTasks } from '../components/container/tasks/TodoTasks';
 export { default as NewTaskBtn } from "./container/tasks/NewTaskBtn";
 export { default as CreateTask } from "./container/tasks/CreateTask";
 export { default as AvatarGroup } from "./container/tasks/AvatarGroup";

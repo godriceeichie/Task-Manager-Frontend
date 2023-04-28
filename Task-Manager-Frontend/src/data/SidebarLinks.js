@@ -9,7 +9,7 @@ const SidebarLinks = [
     {
         title: 'Home',
         icon: homeIcon,
-        path: '/dashboard'
+        path: '/dashboard/'
     },
     {
         title: 'Projects',
