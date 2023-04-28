@@ -1,4 +1,8 @@
 import React from 'react';
+import moreVertIcon from "../../../assets/img/more_vert_black_24dp.svg";
+import AvatarGroup from './AvatarGroup';
+import commentIcon from "../../../assets/img/comment_black_24dp.svg";
+
 
 const CompletedTasks = ({tasks}) => {
     return (

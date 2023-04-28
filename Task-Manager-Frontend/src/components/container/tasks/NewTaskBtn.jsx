@@ -11,7 +11,7 @@ const NewTaskBtn = () => {
         setViewTaskForm(false)
     }, []);
     return { 
-        toggleTaskForm,
+        setViewTaskForm,
         viewTaskForm,
         render: <button onClick={toggleTaskForm} className="dashboardTasks__newTask">+ New Task</button>
     }
