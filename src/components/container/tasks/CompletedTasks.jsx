@@ -5,6 +5,13 @@ import commentIcon from "../../../assets/img/comment_black_24dp.svg";
 
 
 const CompletedTasks = ({tasks}) => {
+    const filterCompletedTasks = () => {
+        return(
+            tasks.filter(task => {
+                return task.status === 'Completed'
+            })
+        )
+    }
     return (
         <div className="dashboardTasks__gridContainer">
             <header>
@@ -13,32 +20,31 @@ const CompletedTasks = ({tasks}) => {
                     Completed
                 </h2>
                 <span className="dashboardTasks__grid-itemsLength">
-                    {tasks ? `(${tasks.length})` : `(0)`}
+                    {tasks ? `(${filterCompletedTasks().length})` : `(0)`}
                 </span>
             </header>
-            {tasks &&
-                tasks.map((task) => {
-                    return (
-                        <div className="dashboardTasks__grid-items" key={task._id}>
-                            <header>
-                                <span className="dashboardTasks__grid-itemsCategory completed">
-                                    {task.category}
-                                </span>
-                                <img src={moreVertIcon} alt="" />
-                            </header>
-                            <div className="dashboardTasks__grid-itemsContent">
-                                <h3>{task.name}</h3>
-                                <p>{task.description}</p>
-                            </div>
-                            <div
-                                style={{ display: "flex", justifyContent: "space-between" }}
-                            >
-                                <AvatarGroup />
-                                <img src={commentIcon} alt="" />
-                            </div>
+            {tasks && filterCompletedTasks().map(task => {
+                return(
+                    <div className="dashboardTasks__grid-items" key={task._id}>
+                        <header>
+                            <span className="dashboardTasks__grid-itemsCategory completed">
+                                {task.category}
+                            </span>
+                            <img src={moreVertIcon} alt="" />
+                        </header>
+                        <div className="dashboardTasks__grid-itemsContent">
+                            <h3>{task.name}</h3>
+                            <p>{task.description}</p>
                         </div>
-                    );
-                })}
+                        <div
+                            style={{ display: "flex", justifyContent: "space-between" }}
+                        >
+                            <AvatarGroup />
+                            <img src={commentIcon} alt="" />
+                        </div>
+                    </div>
+                )
+            })}
         </div>
     );
 }

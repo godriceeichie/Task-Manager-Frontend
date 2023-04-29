@@ -4,7 +4,13 @@ import AvatarGroup from './AvatarGroup';
 import commentIcon from "../../../assets/img/comment_black_24dp.svg";
 
 const TodoTasks = ({tasks}) => {
-    // console.log(tasks)
+    const filterTodoTasks = () => {
+       return(
+        tasks.filter(task => {
+            return task.status === 'Todo'
+        })
+       )
+    }
     return (
         <div className="dashboardTasks__gridContainer">
             <header>
@@ -13,32 +19,31 @@ const TodoTasks = ({tasks}) => {
                     Todo
                 </h2>
                 <span className="dashboardTasks__grid-itemsLength">
-                    {tasks ? `(${tasks.length})` : `(0)`}
+                    {tasks ? `(${filterTodoTasks().length})` : `(0)`}
                 </span>
             </header>
-            {tasks &&
-                tasks.map((task) => {
-                    return (
-                        <div className="dashboardTasks__grid-items" key={task._id}>
-                            <header>
-                                <span className="dashboardTasks__grid-itemsCategory todo">
-                                    {task.category}
-                                </span>
-                                <img src={moreVertIcon} alt="" />
-                            </header>
-                            <div className="dashboardTasks__grid-itemsContent">
-                                <h3>{task.name}</h3>
-                                <p>{task.description}</p>
-                            </div>
-                            <div
-                                style={{ display: "flex", justifyContent: "space-between" }}
-                            >
-                                <AvatarGroup />
-                                <img src={commentIcon} alt="" />
-                            </div>
+            {(tasks) && filterTodoTasks().map(task => {
+                return(
+                    <div className="dashboardTasks__grid-items" key={task._id}>
+                        <header>
+                            <span className="dashboardTasks__grid-itemsCategory todo">
+                                {task.category}
+                            </span>
+                            <img src={moreVertIcon} alt="" />
+                        </header>
+                        <div className="dashboardTasks__grid-itemsContent">
+                            <h3>{task.name}</h3>
+                            <p>{task.description}</p>
                         </div>
-                    );
-                })}
+                        <div
+                            style={{ display: "flex", justifyContent: "space-between" }}
+                        >
+                            <AvatarGroup />
+                            <img src={commentIcon} alt="" />
+                        </div>
+                    </div>
+                )
+            })}
         </div>
     );
 }

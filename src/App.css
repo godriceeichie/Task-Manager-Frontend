@@ -873,6 +873,7 @@ a {
   gap: 1rem;
   border-radius: 1rem;
   margin-bottom: 1rem;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
 }
 
 .dashboardTasks__grid-items > header {
@@ -957,9 +958,6 @@ a {
 
 .close-btn {
   display: block;
-  /* position: absolute;
-    top: 20px;
-    right: 20px; */
   width: 25px;
   height: 25px;
   border-radius: 50%;
