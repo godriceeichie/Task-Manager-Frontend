@@ -1,22 +1,38 @@
 import { NativeSelect } from "@mantine/core";
 import React, { useEffect, useRef, useState } from "react";
-import { DateInput } from '@mantine/dates'
+import { DateInput } from "@mantine/dates";
+import instance from "../../../config/api";
 
 const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
-  const taskForm = useRef();
-  const [taskName, setTaskName] = useState("");
-  const [taskDescription, setTaskDescription] = useState("");
-  const [taskCategory, setTaskCategory] = useState("");
-  const [taskStatus, setTaskStatus] = useState('');
-  
-  const [taskDueDate, setTaskDueDate] = useState();
+  const [name, setname] = useState("");
+  const [description, setdescription] = useState("");
+  const [category, setcategory] = useState("");
+  const [status, setstatus] = useState("");
+  const [priority, setpriority] = useState("");
+  const [dueDate, setdueDate] = useState("");
 
+  const task = {
+    name,
+    description,
+    category,
+    status,
+    priority,
+    dueDate,
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    instance.post("/tasks", task)
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+  };
+ 
+  
   return (
     <aside
       className={
         viewTaskForm ? "dashboardCreateTask active" : "dashboardCreateTask"
       }
-      ref={taskForm}
     >
       <header className="dashboardCreateTask__header">
         <div className="dashboardCreateTask__headingContainer">
@@ -28,15 +44,19 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
           onClick={() => setViewTaskForm(false)}
         ></span>
       </header>
-      <form method="post" className="dashboardCreateTask__form">
+      <form
+        method="post"
+        className="dashboardCreateTask__form"
+        onSubmit={handleSubmit}
+      >
         <div>
           <label htmlFor="task-name">Task name</label>
           <input
             type="text"
             name="task-name"
             id="task-name"
-            onChange={(e) => setTaskName(e.target.value)}
-            value={taskName}
+            onChange={(e) => setname(e.target.value)}
+            value={name}
           />
         </div>
         <div>
@@ -46,37 +66,53 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
             id=""
             cols="30"
             rows="2"
-            onChange={(e) => setTaskDescription(e.target.value)}
-            value={taskDescription}
+            onChange={(e) => setdescription(e.target.value)}
+            value={description}
           ></textarea>
         </div>
         <div className="categoryInput-container">
-            <label htmlFor="category">Category</label>
-            <input
-                type="text"
-                id="category"
-                onChange={(e) => setTaskCategory(e.target.value)}
-                value={taskCategory}
-            />
-        </div>  
-        
+          <label htmlFor="category">Category</label>
+          <input
+            type="text"
+            id="category"
+            onChange={(e) => setcategory(e.target.value)}
+            value={category}
+          />
+        </div>
+
         <div className="non-input-container">
-          <NativeSelect
-            data={['Todo', 'In Progress', 'Completed']}
-            label="Status"
-            description=""
-            placeholder="Select your task status"
-            radius={'md'}
-          />
           
-          <NativeSelect
-            data={['Criritcal', 'Normal', 'Low']}
-            label="Priority"
-            description=""
-            placeholder="Select your task prioirity"
-            radius={'md'}
-          />
-          
+          <div className="statusInput-container">
+            <label htmlFor="">Status</label>
+            <select
+              name=""
+              id="taskStatus"
+              onChange={(e) => setstatus(e.target.value)}
+              value={status}
+              placeholder="Select task status"
+            >
+              <option value="" disabled></option>
+              <option value="Todo">Todo</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </div>
+          <div className="statusInput-container">
+            <label htmlFor="">Priority</label>
+            <select
+              name=""
+              id="taskStatus"
+              onChange={(e) => setpriority(e.target.value)}
+              value={priority}
+              placeholder="Select task priority"
+            >
+              <option value="" disabled ></option>
+              <option value="Urgent">Urgent</option>
+              <option value="Normal">Normal</option>
+              <option value="Low">Low</option>
+            </select>
+          </div>
+
           <DateInput
             minDate={new Date()}
             label="Due Date"
@@ -84,11 +120,10 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
             maw={400}
             valueFormat="DD/MM/YYYY HH:mm:ss"
             mx="auto"
+            value={dueDate}
+            onChange={(e) => setdueDate(e)}
           />
-          {/* <div className="dueDate-container">
-            <label htmlFor="">Due Date</label>
-            <div className="dueDateInput"></div>
-          </div> */}
+      
         </div>
         <button type="submit" className="dashboardCreateTask__formButton">
           Submit Task
