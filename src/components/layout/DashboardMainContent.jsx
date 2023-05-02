@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-const DashboardMainContent = ({ children }) => {
+const DashboardMainContent = (props) => {
+    
     return (
         <main className='dashboardMain'>
             {
-                children    
+                props.children    
             }
         </main>
     );

@@ -1,3 +1,4 @@
+export { default as MainContent } from './layout/MainContent';
 export { default as CompletedTasks } from './container/tasks/CompletedTasks';
 export { default as InProgressTasks } from './container/tasks/InProgressTasks';
 export { default as TodoTasks } from '../components/container/tasks/TodoTasks';

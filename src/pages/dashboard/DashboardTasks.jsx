@@ -2,17 +2,13 @@ import React, { useEffect, useState } from "react";
 import gridIcon from "../../assets/img/grid_view_black_24dp.svg";
 import listIcon from "../../assets/img/view_list_black_24dp.svg";
 import {
-  AvatarGroup,
   CompletedTasks,
   CreateTask,
   InProgressTasks,
   NewTaskBtn,
   TodoTasks,
 } from "../../components";
-import commentIcon from "../../assets/img/comment_black_24dp.svg";
 import { Overlay } from "@mantine/core";
-import axios from "axios";
-import moreVertIcon from "../../assets/img/more_vert_black_24dp.svg";
 import instance from "../../config/api";
 
 const DashboardTasks = () => {
@@ -63,8 +59,7 @@ const DashboardTasks = () => {
       <CreateTask
         viewTaskForm={viewTaskForm}
         setViewTaskForm={setViewTaskForm}
-      />
-      {viewTaskForm && <Overlay zIndex={70} />}
+      />    
     </section>
   );
 };

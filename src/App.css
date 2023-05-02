@@ -429,15 +429,25 @@ a {
   margin-top: 2.25rem;
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.5rem;
+  width: max-content;
+  background-color: white;
+  border-radius: 1rem;
+  border: 1px solid white;
+  /* padding-inline: .5rem; */
 }
 
 .hero__email {
   border-radius: 0.5rem;
   border: none;
   height: 2.25rem;
-  width: 13rem;
   padding-inline: 0.5rem;
+  border-radius: 1rem;
+  font-family: 'Poppins';
+}
+
+.hero__email:focus{
+  outline: none;
 }
 
 .hero__email::placeholder {
@@ -446,13 +456,13 @@ a {
 }
 
 .hero__signup-container > button {
-  background-color: #fff;
+  background-color: #bface2;
   color: #655dbb;
   font-weight: 600;
   font-size: clamp(0.8rem, 2vw, 1rem);
-  /* padding: .55rem 1rem; */
-  padding: 0.55em 1em;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
+  padding: 0.55em .75em;
+  /* border-radius: 0.5rem; */
   text-align: center;
   outline: none;
   white-space: nowrap;
@@ -775,10 +785,7 @@ a {
 }
 
 .dashboardTasks {
-  width: 95%;
-  margin-inline: auto;
-  /* margin-top: 1rem; */
-  height: 100%;
+ padding-inline: 1.25rem;
 }
 
 .dashboardTasks__heading {
@@ -789,8 +796,8 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 66px;
+  /* position: sticky;
+  top: 66px; */
   background-color: #f5f8ff;
   padding-block: 1rem;
 }
@@ -917,12 +924,12 @@ a {
 
 .dashboardCreateTask {
   width: 0%;
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   background-color: white;
-  z-index: 100;
+  z-index: 200;
   opacity: 0;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
@@ -963,8 +970,9 @@ a {
   border-radius: 50%;
   z-index: 50000;
   transform: rotate(45deg);
-  border: 3px solid #888;
+  /* border: 3px solid #888; */
   transition: 0.3s;
+  
 }
 
 .close-btn::before {
@@ -1020,8 +1028,8 @@ a {
 .statusInput,
 .priorityInput,
 .categoryInput,
-.dueDateInput,
-#taskStatus{
+/* .dueDateInput, */
+#taskStatus:not(.mantine-23qt2rl){
   height: 2rem;
   border-radius: 0.5rem;
   border: none;
@@ -1072,7 +1080,7 @@ a {
 
 .dashboardCreateTask__formButton{
     background-color: #3c79f5;
-    margin-top: 24px;
+    margin-top: 16px;
     width: fit-content;
     align-self: center;
     padding: .75rem 1rem;
@@ -1081,7 +1089,61 @@ a {
     color: white;
 }
 
+.errorModal{
+  background-color: #E6D0D0;
+  position: fixed;
+  bottom: 10%;
+  left: -100%;
+  /* transform: translateX(-100%); */
+  width: clamp(200px, 30%, 330px);
 
+  pointer-events: none;
+  display: flex;
+  gap: .5rem;
+  padding: .5rem;
+  border-radius: .5rem;
+  transition: left .3s ease-in;
+}
+
+.errorModal.active{
+  left: 3%;
+  z-index: 7000;
+}
+
+.errorModal__header{
+  display: flex;
+  /* padding: .5rem; */
+}
+
+.errorModal__body{
+  display: flex;
+  
+}
+
+.errorModal__message{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.errorModal__messageHeading{
+  font-size: 14px;
+}
+
+.errorModal__messageBody{
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 12px;
+}
+
+.errorModal__body .close-btn{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+}
 
 @container (width <= 530px) {
   .hero-img {

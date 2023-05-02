@@ -1,15 +1,17 @@
-import { NativeSelect } from "@mantine/core";
+import { NativeSelect, Overlay } from "@mantine/core";
 import React, { useEffect, useRef, useState } from "react";
 import { DateInput } from "@mantine/dates";
 import instance from "../../../config/api";
+import ErrorModal from "../ErrorModal";
 
 const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
   const [name, setname] = useState("");
   const [description, setdescription] = useState("");
-  const [category, setcategory] = useState("");
+  const [category, setcategory] = useState(""); 
   const [status, setstatus] = useState("");
   const [priority, setpriority] = useState("");
   const [dueDate, setdueDate] = useState("");
+  const [error, setError] = useState(null);
 
   const task = {
     name,
@@ -22,12 +24,25 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    instance.post("/tasks", task)
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
+    console.log("submitted");
+    instance.post("/tasks", task).then(
+      (res) => {
+        console.log(res);
+        setname("");
+        setdescription("");
+        setcategory("");
+        setstatus("");
+        setpriority("");
+        setdueDate("");
+        setError(null);
+      },
+      (err) => {
+        setError(err.response.data.error);
+        // console.log(err.response.data.error);
+      }
+    );
   };
- 
-  
+
   return (
     <aside
       className={
@@ -81,7 +96,6 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
         </div>
 
         <div className="non-input-container">
-          
           <div className="statusInput-container">
             <label htmlFor="">Status</label>
             <select
@@ -106,7 +120,7 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
               value={priority}
               placeholder="Select task priority"
             >
-              <option value="" disabled ></option>
+              <option value="" disabled></option>
               <option value="Urgent">Urgent</option>
               <option value="Normal">Normal</option>
               <option value="Low">Low</option>
@@ -123,13 +137,15 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
             value={dueDate}
             onChange={(e) => setdueDate(e)}
           />
-      
         </div>
         <button type="submit" className="dashboardCreateTask__formButton">
           Submit Task
         </button>
       </form>
+      
+      {error && <ErrorModal err={error} />}
     </aside>
+    
   );
 };
 

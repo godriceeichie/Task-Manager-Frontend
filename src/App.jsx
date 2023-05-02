@@ -1,9 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-// import About from './pages/About'
 import {
   Home,
-  MainContent,
   SignUp,
   About,
   Contact,
@@ -17,6 +15,7 @@ import {
   DashboardTasks,
   DashboardMessages,
 } from "./pages";
+import { MainContent } from "./components";
 
 
 function App() {

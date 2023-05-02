@@ -1,10 +1,13 @@
 import React from 'react';
-import { Hero } from '../components';
+import { Hero } from '..';
+import ClientsSection from '../container/clients/ClientsSection';
+
 
 const MainContent = () => {
     return (
         <main className='main-content'>
             <Hero />
+            <ClientsSection />
         </main>
     );
 }
