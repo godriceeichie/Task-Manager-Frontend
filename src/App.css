@@ -398,7 +398,7 @@ a {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   padding: 0rem 2.25rem;
   gap: 1rem;
-  height: 80svh;
+  height: 90svh;
 }
 
 .hero-main-text {
@@ -429,12 +429,14 @@ a {
   margin-top: 2.25rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.5rem;
   width: max-content;
   background-color: white;
   border-radius: 1rem;
   border: 1px solid white;
-  /* padding-inline: .5rem; */
+  min-width: 320px;
+  max-width: 350px;
 }
 
 .hero__email {
@@ -444,6 +446,7 @@ a {
   padding-inline: 0.5rem;
   border-radius: 1rem;
   font-family: 'Poppins';
+  width: 70%;
 }
 
 .hero__email:focus{
@@ -459,13 +462,15 @@ a {
   background-color: #bface2;
   color: #655dbb;
   font-weight: 600;
-  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
   border-radius: 1rem;
-  padding: 0.55em .75em;
-  /* border-radius: 0.5rem; */
+  /* padding: 0.55em .75em; */
+  padding-inline: .5em;
+  height: 100%;
   text-align: center;
   outline: none;
   white-space: nowrap;
+  /* width: 30%; */
 }
 
 .hero-main-img {
@@ -1142,7 +1147,34 @@ a {
   position: absolute;
   top: 10px;
   right: 10px;
+}
 
+.clients{
+  margin-block: 1vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding-block: 2rem;
+}
+
+.clients__logoContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 1010px;
+  margin-inline: auto;
+  justify-content: space-around;
+  /* background-color: #02790d; */
+}
+
+.clients__logoContainer svg{
+  margin: 15px;
+}
+
+.clients__heading{
+  color: #888;
 }
 
 @container (width <= 530px) {
@@ -1215,6 +1247,12 @@ a {
   .hero-main-text {
     align-items: center;
     text-align: center;
+  }
+}
+
+@media (width <= 850px ) and (height <= 600px){
+  .clients{
+    margin-top: clamp(15rem, 30vh, 30rem);
   }
 }
 
