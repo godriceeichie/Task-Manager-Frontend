@@ -65,7 +65,7 @@ a {
 
 .navbar-links-container > li > a {
   color: white;
-  /* font-size: 1rem; */
+  font-weight: 500;
   position: relative;
   display: flex;
   align-items: center;
@@ -121,6 +121,11 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.sign-up-btn.scrolled{
+  background: linear-gradient(123.92deg, rgba(255, 255, 255, 0.6) -2.72%, #655DBB 37.48%);
+  color: white;
 }
 
 .sign-up-btn:hover,
