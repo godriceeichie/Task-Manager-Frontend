@@ -1,6 +1,8 @@
 import React from 'react';
+import UseScroll from '../../../custom hooks/useScroll';
 
 const ClientsSection = () => {
+    
     return (
         <section className='clients'>
             <h1 className='clients__heading'>Trusted by over 2000+</h1>

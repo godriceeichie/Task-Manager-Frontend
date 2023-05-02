@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import UseScroll from '../../custom hooks/useScroll';
 
 
 const Navbar = ({ url, showHamburgerMenu }) => {
+    const { scrollPosition } = UseScroll()
+    useEffect(() => {
+        console.log(scrollPosition)
+    })
     const navbarStyle = {
-        background: (url !== '') ? 'white' : '#655DBB',
-        boxShadow: (url !== '') ? '0px 2px 25px -3px rgba(0,0,0,0.31)' : 'none'
+        background: ((url !== '' || scrollPosition >= 10)) ? 'white' : '#655DBB',
+        borderBottom: ((url !== '' || scrollPosition >= 10)) ? '1px solid #ccc' : 'none'
+    }
+
+    const logoName = {
+        color: ((url !== '' || scrollPosition >= 10)) ? '1px solid #ccc' : 'none'
     }
 
     return (
@@ -15,7 +24,7 @@ const Navbar = ({ url, showHamburgerMenu }) => {
                     <rect x="3.5" y="4" width="35" height="35" fill="white" stroke="#3E54AC" strokeWidth="7" />
                 </svg>
 
-                <Link to={'/'}>Slick</Link>
+                <Link to={'/'} >Slick</Link>
             </h1>
             <ul className='navbar-links-container'>
                 <li>
