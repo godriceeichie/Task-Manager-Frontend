@@ -1,6 +1,7 @@
 import React from 'react';
 import { Hero } from '..';
 import ClientsSection from '../container/clients/ClientsSection';
+import Features from '../container/features/Features';
 
 
 const MainContent = () => {
@@ -8,6 +9,7 @@ const MainContent = () => {
         <main className='main-content'>
             <Hero />
             <ClientsSection />
+            <Features />
         </main>
     );
 }

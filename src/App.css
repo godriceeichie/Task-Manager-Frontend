@@ -1161,6 +1161,7 @@ a {
   align-items: center;
   gap: 2rem;
   padding-block: 2rem;
+  /* background-color: #F5F5F5; */
 }
 
 .clients__logoContainer{
@@ -1180,6 +1181,29 @@ a {
 
 .clients__heading{
   color: #888;
+}
+
+.features{
+  padding-block: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-block: 2rem;
+  /* background-color: #ECF2FF; */
+}
+
+.features__heading{
+  font-weight: 700;
+  font-size: 2rem;
+  text-align: center;
+  letter-spacing: -0.5px;
+  line-height: 57px;
+}
+
+.feature__body{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
 }
 
 @container (width <= 530px) {

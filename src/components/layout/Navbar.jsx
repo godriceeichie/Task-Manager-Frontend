@@ -7,26 +7,26 @@ const Navbar = ({ url, showHamburgerMenu }) => {
     //It tracks the scroll position
     const { scrollPosition } = UseScroll()
     const navbarStyle = {
-        background: ((url !== '' || scrollPosition >= 10)) ? 'white' : '#655DBB',
-        borderBottom: ((url !== '' || scrollPosition >= 10)) ? '1px solid #ccc' : 'none'
+        background: ((url !== '' || scrollPosition >= 200)) ? 'white' : '#655DBB',
+        borderBottom: ((url !== '' || scrollPosition >= 200)) ? '1px solid #ccc' : 'none'
     }
 
     const logoName = {
-        color: ((url !== '' || scrollPosition >= 10)) ? '#3e54ac' : '#ecf2ff'
+        color: ((url !== '' || scrollPosition >= 200)) ? '#3e54ac' : '#ecf2ff'
     }
 
     const navLinks = {
-        color: ((url !== '' || scrollPosition >= 10)) ? '#655DBB' : '#fff'
+        color: ((url !== '' || scrollPosition >= 200)) ? '#655DBB' : '#fff'
     }
 
     const signIn = {
-        backgroundColor: ((url !== '' || scrollPosition >= 10)) ? '#fff' : '#655DBB',
-        color: ((url !== '' || scrollPosition >= 10)) ? '#3e54ac' : '#fff'
+        backgroundColor: ((url !== '' || scrollPosition >= 200)) ? '#fff' : '#655DBB',
+        color: ((url !== '' || scrollPosition >= 200)) ? '#3e54ac' : '#fff'
     }
 
     const signUp = {
-        background : ((url !== '' || scrollPosition >= 10)) ? 'linear-gradient(123.92deg, rgba(255, 255, 255, 0.6) -2.72%, #655DBB 37.48%);' : '#fff',
-        color: ((url !== '' || scrollPosition >= 10)) ? '#fff' : '#3e54ac'
+        background : ((url !== '' || scrollPosition >= 200)) ? 'linear-gradient(123.92deg, rgba(255, 255, 255, 0.6) -2.72%, #655DBB 37.48%);' : '#fff',
+        color: ((url !== '' || scrollPosition >= 200)) ? '#fff' : '#3e54ac'
     }
     return (
         <nav className='navbar' style={navbarStyle}>
@@ -50,7 +50,7 @@ const Navbar = ({ url, showHamburgerMenu }) => {
             </ul>
             <div className="auth-buttons">
                 <Link to={'/auth/login'} className='sign-in-btn' style={signIn}>Login</Link>
-                <Link to={'/auth/signup'} className={(scrollPosition >= 10 || url !== '') ? 'sign-up-btn scrolled' : 'sign-up-btn'}>Sign Up</Link>
+                <Link to={'/auth/signup'} className={(scrollPosition >= 200 || url !== '') ? 'sign-up-btn scrolled' : 'sign-up-btn'}>Sign Up</Link>
                 <button className='navbar-hamburger-btn' onClick={showHamburgerMenu}>
                     <div className="navbar-hamburger-wrapper">
                         <div className="navbar-hamburger-line half-line"></div>
