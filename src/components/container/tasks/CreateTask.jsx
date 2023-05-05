@@ -3,6 +3,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { DateInput } from "@mantine/dates";
 import instance from "../../../config/api";
 import ErrorModal from "../ErrorModal";
+import useTaskContext from "../../../hooks/useTaskContext";
+
+
 
 const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
   const [name, setname] = useState("");
@@ -22,6 +25,8 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
     dueDate,
   };
 
+  const { tasks, dispatch } = useTaskContext()
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submitted");
@@ -35,6 +40,7 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
         setpriority("");
         setdueDate("");
         setError(null);
+        dispatch({type: 'CREATE_TASK', payload: task})
       },
       (err) => {
         setError(err.response.data.error);

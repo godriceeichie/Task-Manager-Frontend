@@ -10,10 +10,12 @@ import {
 } from "../../components";
 import { Overlay } from "@mantine/core";
 import instance from "../../config/api";
+import useTaskContext from "../../hooks/useTaskContext";
 
 const DashboardTasks = () => {
   const [toggleTaskView, setToggleTaskView] = useState(false);
-  const [tasks, setTasks] = useState(null);
+  // const [tasks, setTasks] = useState(null);
+  const { tasks, dispatch } = useTaskContext()
 
   const toggleActiveClass = () => {
     setToggleTaskView(!toggleTaskView);
@@ -25,12 +27,13 @@ const DashboardTasks = () => {
     instance
       .get("/tasks")
       .then((response) => {
-        setTasks(response.data);
+        dispatch({type: 'SET_TASKS', payload: response.data})
+        // setTasks(response.data)
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [dispatch]);
 
   return (
     <section className="dashboardTasks">

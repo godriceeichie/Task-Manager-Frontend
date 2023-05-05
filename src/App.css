@@ -10,6 +10,7 @@ body {
   /* width: 100%;     */
   /* min-height: 100vh;/ */
   font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
 }
 
 html {
@@ -626,6 +627,7 @@ a {
   background-color: #f5f8ff;
   display: flex;
   height: 100dvh;
+  overflow-x: hidden;
 }
 
 .dashboardSidebar {
@@ -695,11 +697,13 @@ a {
 .dashboardSidebar__nav-name {
   display: inline-block;
   vertical-align: middle;
+  
 }
 
 .dashboardMain {
   width: 80%;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .dashboardHeader {
@@ -746,6 +750,7 @@ a {
 
 .dashboardHeader__userInfo {
   display: flex;
+  
 }
 
 .dashboardHeader_notification {
@@ -753,6 +758,7 @@ a {
   background: #eff4ff;
   padding: 0.45rem 0.5rem;
   position: relative;
+  
 }
 
 .notification-badge {
@@ -933,24 +939,25 @@ a {
 }
 
 .dashboardCreateTask {
-  width: 0%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  width: 0px;
   background-color: white;
   z-index: 200;
-  opacity: 0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: -100%;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   padding: 2rem 1.5rem;
   transition: width 0.3s ease-in-out;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .dashboardCreateTask.active {
   opacity: 1;
   width: clamp(350px, 35%, 500px);
   max-width: 500px;
+  right: 0;
 }
 
 .dashboardCreateTask__header {
@@ -1101,11 +1108,11 @@ a {
 
 .errorModal{
   background-color: #E6D0D0;
-  position: fixed;
+  position: absolute;
   bottom: 10%;
-  left: -100%;
-  /* transform: translateX(-100%); */
+  left: 20px;
   width: clamp(200px, 30%, 330px);
+  background-color: red;
 
   pointer-events: none;
   display: flex;
@@ -1113,6 +1120,7 @@ a {
   padding: .5rem;
   border-radius: .5rem;
   transition: left .3s ease-in;
+  z-index: 10;
 }
 
 .errorModal.active{
@@ -1122,7 +1130,7 @@ a {
 
 .errorModal__header{
   display: flex;
-  /* padding: .5rem; */
+
 }
 
 .errorModal__body{
@@ -1152,16 +1160,16 @@ a {
   position: absolute;
   top: 10px;
   right: 10px;
-}
+} 
 
 .clients{
-  margin-block: 1vw;
+  /* margin-block: 1vw; */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  padding-block: 2rem;
-  /* background-color: #F5F5F5; */
+  padding-block: 2.5rem;
+  background-color: #F5F5F5;
 }
 
 .clients__logoContainer{
@@ -1184,11 +1192,12 @@ a {
 }
 
 .features{
-  padding-block: 2rem;
+  padding-block: 5rem;
+  padding-inline: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-block: 2rem;
+  /* margin-block: 2rem; */
   /* background-color: #ECF2FF; */
 }
 
@@ -1198,12 +1207,37 @@ a {
   text-align: center;
   letter-spacing: -0.5px;
   line-height: 57px;
+  margin-bottom: 2rem;
 }
 
-.feature__body{
+.features__container{
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 1fr;
+  gap: 1rem;
+  padding-inline: 2.5rem;
+}
+
+.feature__iconContainer{
+  display: inline-block;
+  margin-bottom: 1rem;
+  background-color: #bface2;
+  padding: .5rem;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.feature__text> h2{
+  font-size: 1.5rem;
+}
+
+.feature__text>p{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #6B6B7F;
 }
 
 @container (width <= 530px) {
