@@ -1,4 +1,4 @@
-import { NativeSelect, Overlay } from "@mantine/core";
+import { Overlay, Button } from "@mantine/core";
 import React, { useEffect, useRef, useState } from "react";
 import { DateInput } from "@mantine/dates";
 import instance from "../../../config/api";
@@ -15,6 +15,8 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
   const [priority, setpriority] = useState("");
   const [dueDate, setdueDate] = useState("");
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState()
+
 
   const task = {
     name,
@@ -30,6 +32,7 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submitted");
+    setIsLoading(true)
     instance.post("/tasks", task).then(
       (res) => {
         console.log(res);
@@ -41,6 +44,7 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
         setdueDate("");
         setError(null);
         dispatch({type: 'CREATE_TASK', payload: task})
+        setIsLoading(false)
       },
       (err) => {
         setError(err.response.data.error);
@@ -144,9 +148,16 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
             onChange={(e) => setdueDate(e)}
           />
         </div>
-        <button type="submit" className="dashboardCreateTask__formButton">
+        {/* <button type="submit" className="dashboardCreateTask__formButton">
           Submit Task
-        </button>
+        </button> */}
+        {
+          isLoading ? ( <Button loading type="submit" radius={"md"} color="blue">
+          Submit Task
+        </Button> ) : (<Button type="submit" radius={"md"} color="blue">
+          Submit Task
+        </Button>)
+        }
       </form>
       
       {error && <ErrorModal err={error} />}

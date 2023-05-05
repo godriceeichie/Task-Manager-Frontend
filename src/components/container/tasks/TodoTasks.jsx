@@ -13,15 +13,19 @@ const TodoTasks = ({tasks}) => {
     }
     return (
         <div className="dashboardTasks__gridContainer">
-            <header>
-                <h2 className="dashboardTasks__gridHeading">
-                    <span></span>
-                    Todo
-                </h2>
-                <span className="dashboardTasks__grid-itemsLength">
-                    {tasks ? `(${filterTodoTasks().length})` : `(0)`}
-                </span>
-            </header>
+           {
+            tasks && (
+                <header>
+                    <h2 className="dashboardTasks__gridHeading">
+                        <span></span>
+                        Todo
+                    </h2>
+                    <span className="dashboardTasks__grid-itemsLength">
+                        {tasks ? `(${filterTodoTasks().length})` : `(0)`}
+                    </span>
+                </header>
+            )
+           }
             {(tasks) && filterTodoTasks().map(task => {
                 return(
                     <div className="dashboardTasks__grid-items" key={task._id}>

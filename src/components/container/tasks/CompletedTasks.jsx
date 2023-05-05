@@ -14,15 +14,19 @@ const CompletedTasks = ({tasks}) => {
     }
     return (
         <div className="dashboardTasks__gridContainer">
-            <header>
-                <h2 className="dashboardTasks__gridHeading">
-                    <span className="completed"></span>
-                    Completed
-                </h2>
-                <span className="dashboardTasks__grid-itemsLength">
-                    {tasks ? `(${filterCompletedTasks().length})` : `(0)`}
-                </span>
-            </header>
+            {
+                tasks && (
+                    <header>
+                        <h2 className="dashboardTasks__gridHeading">
+                            <span className="completed"></span>
+                            Completed
+                        </h2>
+                        <span className="dashboardTasks__grid-itemsLength">
+                            {tasks ? `(${filterCompletedTasks().length})` : `(0)`}
+                        </span>
+                    </header>
+                )
+            }
             {tasks && filterCompletedTasks().map(task => {
                 return(
                     <div className="dashboardTasks__grid-items" key={task._id}>

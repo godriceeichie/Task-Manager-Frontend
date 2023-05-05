@@ -1095,15 +1095,15 @@ a {
   border-radius: .5rem;
 }
 
-.dashboardCreateTask__formButton{
-    background-color: #3c79f5;
-    margin-top: 16px;
-    width: fit-content;
-    align-self: center;
-    padding: .75rem 1rem;
-    border-radius: .5rem;
-    font-size: 1rem;
-    color: white;
+.dashboardCreateTask__form .mantine-Button-root {
+  background-color: #3c79f5;
+  margin-top: 16px;
+  width: fit-content;
+  align-self: center;
+  /* padding: .75rem 1rem; */
+  border-radius: .5rem;
+  font-size: 1rem;
+  color: white;
 }
 
 .errorModal{
@@ -1130,7 +1130,6 @@ a {
 
 .errorModal__header{
   display: flex;
-
 }
 
 .errorModal__body{

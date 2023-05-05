@@ -30,7 +30,7 @@ function DashboardSidebar() {
                 SidebarLinks.map(({title, icon, path}, index)=> {
                   return(
                     <li key={index}>
-                      <NavLink to={path} activeclassname='active' exact={path === '/dashboard/'}>
+                      <NavLink to={path} activeclassname='active' exact={path === '/dashboard/' ? true : false}>
                         <img src={icon} alt=""/>
                         <span className='dashboardSidebar__nav-name'>{title}</span>
                       </NavLink>

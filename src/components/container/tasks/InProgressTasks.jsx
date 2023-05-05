@@ -14,15 +14,19 @@ const InProgressTasks = ({tasks}) => {
     }
     return (
         <div className="dashboardTasks__gridContainer">
-            <header>
-                <h2 className="dashboardTasks__gridHeading">
-                    <span className="inProgress"></span>
-                    In Progress
-                </h2>
-                <span className="dashboardTasks__grid-itemsLength">
-                    {tasks ? `(${filterInProgressTasks().length})` : `(0)`}
-                </span>
-            </header>
+            {
+                tasks && (
+                    <header>
+                        <h2 className="dashboardTasks__gridHeading">
+                            <span className="inProgress"></span>
+                            In Progress
+                        </h2>
+                        <span className="dashboardTasks__grid-itemsLength">
+                            {tasks ? `(${filterInProgressTasks().length})` : `(0)`}
+                        </span>
+                    </header>
+                )
+            }
             {tasks && filterInProgressTasks().map(task => {
                 return (
                     <div className="dashboardTasks__grid-items" key={task._id}>

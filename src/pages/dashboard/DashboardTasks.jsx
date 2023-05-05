@@ -8,13 +8,13 @@ import {
   NewTaskBtn,
   TodoTasks,
 } from "../../components";
-import { Overlay } from "@mantine/core";
+import { Overlay, Loader,Flex } from "@mantine/core";
 import instance from "../../config/api";
 import useTaskContext from "../../hooks/useTaskContext";
 
 const DashboardTasks = () => {
   const [toggleTaskView, setToggleTaskView] = useState(false);
-  // const [tasks, setTasks] = useState(null);
+  const [isLoading, setIsLoading] = useState(true)
   const { tasks, dispatch } = useTaskContext()
 
   const toggleActiveClass = () => {
@@ -24,15 +24,18 @@ const DashboardTasks = () => {
   const { render, viewTaskForm, setViewTaskForm } = NewTaskBtn();
 
   useEffect(() => {
-    instance
+    const fetchTasks = () => {
+      instance
       .get("/tasks")
       .then((response) => {
         dispatch({type: 'SET_TASKS', payload: response.data})
-        // setTasks(response.data)
+        setIsLoading(false)
       })
       .catch((err) => {
         console.log(err);
       });
+    }
+    fetchTasks()
   }, [dispatch]);
 
   return (
@@ -54,11 +57,22 @@ const DashboardTasks = () => {
                 </div> */}
         {render}
       </header>
-      <main className="dashboardTasks__grid">
-        <TodoTasks tasks={tasks} />
-        <InProgressTasks tasks={tasks} />
-        <CompletedTasks tasks={tasks} />
-      </main>
+      {
+        isLoading ? (
+          <main className="dashboardTasks__grid">
+            <Flex justify={"center"} align={"center"} w={'70vw'} h={'50vh'}>
+            <Loader />
+            </Flex>
+          </main>
+        )
+        : (
+          <main className="dashboardTasks__grid">
+            <TodoTasks tasks={tasks} />
+            <InProgressTasks tasks={tasks} />
+            <CompletedTasks tasks={tasks} />
+          </main>
+        )
+      }
       <CreateTask
         viewTaskForm={viewTaskForm}
         setViewTaskForm={setViewTaskForm}
