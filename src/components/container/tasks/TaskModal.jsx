@@ -1,14 +1,30 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Menu, Button, Text } from '@mantine/core';
 import moreVertIcon from "../../../assets/img/more_vert_black_24dp.svg";
 import { AiOutlineEdit } from 'react-icons/ai'
 import { MdOutlineDelete } from 'react-icons/md'
+import instance from '../../../config/api';
+import useTaskContext from '../../../hooks/useTaskContext';
 
-const TaskModal = () => {
+const TaskModal = ({ task }) => {
+  const [deleted, setDeleted] = useState(false);
+  const { tasks, dispatch } = useTaskContext()
+  // console.log(task)
+  useEffect(() => {
+    if(deleted){
+      instance.delete(`/tasks/${task._id}`)
+      .then((response) => {
+        dispatch({type: 'DELETE_TASK', payload: response.data})
+        
+      }, (err) => {
+        console.log(err.response.data.error)
+      })
+    }
+  },[deleted])
+
   return (
     <Menu shadow="md" width={200}>
       <Menu.Target>
-        {/* <Button>Toggle menu</Button> */}
         <img src={moreVertIcon} alt="" />
       </Menu.Target>
 
@@ -18,7 +34,7 @@ const TaskModal = () => {
         <Menu.Divider />
 
         <Menu.Label>Danger zone</Menu.Label>
-        <Menu.Item color="red" icon={<MdOutlineDelete size={14} />}>Delete Task</Menu.Item>
+        <Menu.Item color="red" icon={<MdOutlineDelete size={14} />} onClick={() => {setDeleted(!deleted)}}>Delete Task</Menu.Item>
       </Menu.Dropdown>
     </Menu>
   );

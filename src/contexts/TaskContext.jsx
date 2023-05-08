@@ -9,6 +9,16 @@ export const tasksReducer = (state, action) => {
             return { tasks: action.payload }
         case 'CREATE_TASK':
             return { tasks: [action.payload, ...state.tasks]}
+        case 'DELETE_TASK':
+            // console.log(action.payload)
+            let data = [...state.tasks]
+            return {
+                tasks: (
+                    data.filter((items) => {
+                        return items._id !== action.payload._id
+                    })
+                )
+            }
         default:
             return state
     }

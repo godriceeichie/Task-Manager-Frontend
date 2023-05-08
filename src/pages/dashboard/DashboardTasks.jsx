@@ -46,6 +46,7 @@ const DashboardTasks = () => {
       instance
       .get("/tasks")
       .then((response) => {
+        console.log(response)
         dispatch({type: 'SET_TASKS', payload: response.data})
         setIsLoading(false)
       })

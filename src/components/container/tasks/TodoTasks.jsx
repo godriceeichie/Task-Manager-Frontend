@@ -7,6 +7,7 @@ import TaskModal from './TaskModal'
 
 const TodoTasks = ({tasks}) => {
     const filterTodoTasks = () => {
+        // console.log(tasks)
        return(
         tasks.filter(task => {
             return task.status === 'Todo'
@@ -36,7 +37,7 @@ const TodoTasks = ({tasks}) => {
                                 {task.category}
                             </span>
                             {/* <img src={moreVertIcon} alt="" /> */}
-                            <TaskModal />
+                            <TaskModal task={task}/>
                         </header>
                         <div className="dashboardTasks__grid-itemsContent">
                             <h3>{task.name}</h3>

@@ -2,6 +2,7 @@ import React from 'react';
 import moreVertIcon from "../../../assets/img/more_vert_black_24dp.svg";
 import AvatarGroup from './AvatarGroup';
 import commentIcon from "../../../assets/img/comment_black_24dp.svg";
+import TaskModal from './TaskModal';
 
 
 const InProgressTasks = ({tasks}) => {
@@ -34,7 +35,7 @@ const InProgressTasks = ({tasks}) => {
                             <span className="dashboardTasks__grid-itemsCategory inProgress">
                                 {task.category}
                             </span>
-                            <img src={moreVertIcon} alt="" />
+                            <TaskModal task={task}/>
                         </header>
                         <div className="dashboardTasks__grid-itemsContent">
                             <h3>{task.name}</h3>
