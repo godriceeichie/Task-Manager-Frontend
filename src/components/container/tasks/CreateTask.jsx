@@ -4,7 +4,8 @@ import { DateInput } from "@mantine/dates";
 import instance from "../../../config/api";
 import ErrorModal from "../ErrorModal";
 import useTaskContext from "../../../hooks/useTaskContext";
-
+import { taskSchema } from "../../../schema/taskSchema";
+import { z } from 'zod'
 
 
 const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
@@ -33,6 +34,16 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
     e.preventDefault();
     console.log("submitted");
     setIsLoading(true)
+    // const {priority} = taskSchema.parse(task)
+
+    try{
+      taskSchema.parse(task)
+      
+    }catch(err){
+      console.log(err)
+
+    }
+    
     instance.post("/tasks", task).then(
       (res) => {
         console.log(res);
@@ -48,9 +59,9 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
       },
       (err) => {
         setError(err.response.data.error);
-        // console.log(err.response.data.error);
       }
     );
+
   };
 
   return (
@@ -82,6 +93,7 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
             id="task-name"
             onChange={(e) => setname(e.target.value)}
             value={name}
+            
           />
         </div>
         <div>

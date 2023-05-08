@@ -8,7 +8,7 @@ import {
   NewTaskBtn,
   TodoTasks,
 } from "../../components";
-import { Overlay, Loader,Flex } from "@mantine/core";
+import { Overlay, Loader,Flex, Center } from "@mantine/core";
 import instance from "../../config/api";
 import useTaskContext from "../../hooks/useTaskContext";
 
@@ -22,6 +22,24 @@ const DashboardTasks = () => {
   };
 
   const { render, viewTaskForm, setViewTaskForm } = NewTaskBtn();
+  const dashboardMainStyle = {
+    marginTop: '0.75rem',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: '1rem',
+    width: '100%',
+  }
+
+  const dashboardLoadingStyle = {
+    marginTop: '0.75rem',
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1
+  }
 
   useEffect(() => {
     const fetchTasks = () => {
@@ -57,19 +75,18 @@ const DashboardTasks = () => {
                 </div> */}
         {render}
       </header>
+      {/* w={'70vw'} h={'50vh'} */}
       {
         isLoading ? (
-          <main className="dashboardTasks__grid">
-            <Flex justify={"center"} align={"center"} w={'70vw'} h={'50vh'}>
+          <main className="dashboardTasks__grid" style={dashboardLoadingStyle}>
             <Loader />
-            </Flex>
           </main>
         )
         : (
-          <main className="dashboardTasks__grid">
+          <main className="dashboardTasks__grid" style={dashboardMainStyle}>
             <TodoTasks tasks={tasks} />
             <InProgressTasks tasks={tasks} />
-            <CompletedTasks tasks={tasks} />
+            <CompletedTasks tasks={tasks} /> 
           </main>
         )
       }

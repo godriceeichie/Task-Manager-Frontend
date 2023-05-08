@@ -2,6 +2,8 @@ import React from 'react';
 import moreVertIcon from "../../../assets/img/more_vert_black_24dp.svg";
 import AvatarGroup from './AvatarGroup';
 import commentIcon from "../../../assets/img/comment_black_24dp.svg";
+import TaskModal from './TaskModal'
+
 
 const TodoTasks = ({tasks}) => {
     const filterTodoTasks = () => {
@@ -33,7 +35,8 @@ const TodoTasks = ({tasks}) => {
                             <span className="dashboardTasks__grid-itemsCategory todo">
                                 {task.category}
                             </span>
-                            <img src={moreVertIcon} alt="" />
+                            {/* <img src={moreVertIcon} alt="" /> */}
+                            <TaskModal />
                         </header>
                         <div className="dashboardTasks__grid-itemsContent">
                             <h3>{task.name}</h3>
