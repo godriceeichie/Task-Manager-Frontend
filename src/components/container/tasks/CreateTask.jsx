@@ -17,7 +17,7 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
   const [dueDate, setdueDate] = useState("");
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState()
-
+  const [emptyFields, setEmptyFields] = useState([])
 
   const task = {
     name,
@@ -28,8 +28,9 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
     dueDate,
   };
 
-  const { tasks, dispatch } = useTaskContext()
+  const { dispatch } = useTaskContext()
 
+  //function for submitting the task
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submitted");
@@ -47,6 +48,9 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
     instance.post("/tasks", task).then(
       (res) => {
         console.log(res);
+        
+        setEmptyFields([])
+        //make the input fields empty when the form has been submitted
         setname("");
         setdescription("");
         setcategory("");
@@ -54,11 +58,15 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
         setpriority("");
         setdueDate("");
         setError(null);
+        //Display the submitted task in the task page
         dispatch({type: 'CREATE_TASK', payload: task})
         setIsLoading(false)
       },
       (err) => {
+        console.log(err)
         setError(err.response.data.error);
+        setEmptyFields(err.response.data.emptyFields)
+        setIsLoading(false)
       }
     );
 
@@ -90,7 +98,7 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
           <input
             type="text"
             name="task-name"
-            id="task-name"
+            className={emptyFields.includes('name') ? 'task-name error' : 'task-name'}
             onChange={(e) => setname(e.target.value)}
             value={name}
             
@@ -111,7 +119,7 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
           <label htmlFor="category">Category</label>
           <input
             type="text"
-            id="category"
+            className={emptyFields.includes('name') ? 'category error' : 'category'}
             onChange={(e) => setcategory(e.target.value)}
             value={category}
           />
@@ -122,7 +130,7 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
             <label htmlFor="">Status</label>
             <select
               name=""
-              id="taskStatus"
+              className={emptyFields.includes('name') ? 'taskStatus error' : 'taskStatus'}
               onChange={(e) => setstatus(e.target.value)}
               value={status}
               placeholder="Select task status"
@@ -137,7 +145,7 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
             <label htmlFor="">Priority</label>
             <select
               name=""
-              id="taskStatus"
+              className={(emptyFields.includes('priority')) ? 'taskStatus error' : 'taskStatus'}
               onChange={(e) => setpriority(e.target.value)}
               value={priority}
               placeholder="Select task priority"
@@ -158,11 +166,13 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
             mx="auto"
             value={dueDate}
             onChange={(e) => setdueDate(e)}
+            className={(emptyFields.includes('dueDate')) ? 'dueDate error': 'dueDate'}
           />
         </div>
         {/* <button type="submit" className="dashboardCreateTask__formButton">
           Submit Task
         </button> */}
+        
         {
           isLoading ? ( <Button loading type="submit" radius={"md"} color="blue">
           Submit Task
@@ -171,8 +181,8 @@ const CreateTask = ({ viewTaskForm, setViewTaskForm }) => {
         </Button>)
         }
       </form>
-      
-      {error && <ErrorModal err={error} />}
+      {/* Container to display any error that may have occured in the form */}
+      {error && <div className="errorMessage">{error}</div>}
     </aside>
     
   );

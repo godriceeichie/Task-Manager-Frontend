@@ -706,6 +706,10 @@ a {
   overflow-x: hidden;
 }
 
+.dashboardMain input, .dashboardMain textarea{
+  font-family: 'Poppins', sans-serif;
+}
+
 .dashboardHeader {
   padding-block: 0.5rem;
   position: sticky;
@@ -1043,11 +1047,8 @@ a {
 }
 
 .dashboardCreateTask__form input,
-.statusInput,
-.priorityInput,
-.categoryInput,
 /* .dueDateInput, */
-#taskStatus:not(.mantine-23qt2rl){
+.taskStatus:not(.mantine-23qt2rl){
   height: 2rem;
   border-radius: 0.5rem;
   border: none;
@@ -1063,7 +1064,7 @@ a {
 .dashboardCreateTask__form input:focus,
 .dashboardCreateTask__form textarea:focus,
 .mantine-y7odgk:focus ,
-#taskStatus:focus{
+.taskStatus:focus{
   outline: 1px solid #3c79f5;
   border: none;
 }
@@ -1073,6 +1074,14 @@ a {
   border: 1px solid #CED4DA;
   padding: 1rem;
   border-radius: 0.5rem;
+}
+
+.dashboardCreateTask__form .task-name.error,
+.dashboardCreateTask__form .category.error,
+.dashboardCreateTask__form .taskStatus.error,
+.dashboardCreateTask__form .dueDate.error .mantine-DateInput-input
+{
+  border: 1px solid #e7195a;
 }
 
 .non-input-container {
@@ -1091,14 +1100,14 @@ a {
 
 }
 
-#taskStatus{
+.taskStatus{
   height: 2rem;
   border-radius: .5rem;
 }
 
 .dashboardCreateTask__form .mantine-Button-root {
   background-color: #3c79f5;
-  margin-top: 16px;
+  /* margin-top: 16px; */
   width: fit-content;
   align-self: center;
   /* padding: .75rem 1rem; */
@@ -1239,6 +1248,26 @@ a {
 .feature__text>p{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #6B6B7F;
+}
+
+.errorMessage{
+  color: #e7195a;
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid #e7195a;
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+.time-left{
+  font-size: .75rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  background-color: #F1F3F5;
+  border-radius: 12px;
+  padding: .5rem;
+  font-weight: 500;
 }
 
 @container (width <= 530px) {

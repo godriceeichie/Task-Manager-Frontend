@@ -3,7 +3,8 @@ import moreVertIcon from "../../../assets/img/more_vert_black_24dp.svg";
 import AvatarGroup from './AvatarGroup';
 import commentIcon from "../../../assets/img/comment_black_24dp.svg";
 import TaskModal from './TaskModal'
-
+import { AiOutlineClockCircle } from 'react-icons/ai'
+import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
 const TodoTasks = ({tasks}) => {
     const filterTodoTasks = () => {
@@ -30,6 +31,8 @@ const TodoTasks = ({tasks}) => {
             )
            }
             {(tasks) && filterTodoTasks().map(task => {
+                let daysLeft = (new Date(task.dueDate).getDate()) - (new Date().getDate())
+                // if(task._id === '6459499698915d5eb9790e16') console.log(task)
                 return(
                     <div className="dashboardTasks__grid-items" key={task._id}>
                         <header>
@@ -46,7 +49,11 @@ const TodoTasks = ({tasks}) => {
                         <div
                             style={{ display: "flex", justifyContent: "space-between" }}
                         >
-                            <AvatarGroup />
+                            {/* <AvatarGroup /> */}
+                            <span className='time-left'>
+                                <AiOutlineClockCircle color='#e74646'/>
+                                {(daysLeft > 0) && `${daysLeft} days left`}
+                            </span>
                             <img src={commentIcon} alt="" />
                         </div>
                     </div>

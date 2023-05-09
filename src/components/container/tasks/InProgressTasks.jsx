@@ -3,7 +3,7 @@ import moreVertIcon from "../../../assets/img/more_vert_black_24dp.svg";
 import AvatarGroup from './AvatarGroup';
 import commentIcon from "../../../assets/img/comment_black_24dp.svg";
 import TaskModal from './TaskModal';
-
+import { AiOutlineClockCircle } from 'react-icons/ai'
 
 const InProgressTasks = ({tasks}) => {
     const filterInProgressTasks = () => {
@@ -29,6 +29,7 @@ const InProgressTasks = ({tasks}) => {
                 )
             }
             {tasks && filterInProgressTasks().map(task => {
+                let daysLeft = (new Date(task.dueDate).getDate()) - (new Date().getDate())
                 return (
                     <div className="dashboardTasks__grid-items" key={task._id}>
                         <header>
@@ -44,7 +45,11 @@ const InProgressTasks = ({tasks}) => {
                         <div
                             style={{ display: "flex", justifyContent: "space-between" }}
                         >
-                            <AvatarGroup />
+                            {/* <AvatarGroup /> */}
+                            <span className='time-left'>
+                                <AiOutlineClockCircle color='#ebb02d'/>
+                                {(daysLeft > 0) && `${daysLeft} days left`}
+                            </span>
                             <img src={commentIcon} alt="" />
                         </div>
                     </div>

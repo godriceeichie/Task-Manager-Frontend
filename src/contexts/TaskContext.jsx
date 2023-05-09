@@ -4,6 +4,7 @@ import { createContext } from "react";
 export const TasksContext = createContext()
 
 export const tasksReducer = (state, action) => {
+    //switch case for the different types from the dispatch method
     switch(action.type){
         case 'SET_TASKS':
             return { tasks: action.payload }

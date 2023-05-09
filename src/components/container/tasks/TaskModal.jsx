@@ -8,6 +8,7 @@ import useTaskContext from '../../../hooks/useTaskContext';
 
 const TaskModal = ({ task }) => {
   const [deleted, setDeleted] = useState(false);
+  const [edited, setEdited] = useState(false);
   const { tasks, dispatch } = useTaskContext()
   // console.log(task)
   useEffect(() => {
@@ -22,6 +23,18 @@ const TaskModal = ({ task }) => {
     }
   },[deleted])
 
+  useEffect(() => {
+    if(deleted){
+      instance.patch(`/tasks/${task._id}`)
+      .then((response) => {
+        dispatch({type: 'DELETE_TASK', payload: response.data})
+        
+      }, (err) => {
+        console.log(err.response.data.error)
+      })
+    }
+  },[edited])
+
   return (
     <Menu shadow="md" width={200}>
       <Menu.Target>
@@ -30,7 +43,7 @@ const TaskModal = ({ task }) => {
 
       <Menu.Dropdown>
         <Menu.Label>Edit</Menu.Label>
-        <Menu.Item icon={<AiOutlineEdit size={14} />}>Edit Task</Menu.Item>
+        <Menu.Item icon={<AiOutlineEdit size={14} />} onClick={() => {setEdited(!edited)}}>Edit Task</Menu.Item>
         <Menu.Divider />
 
         <Menu.Label>Danger zone</Menu.Label>

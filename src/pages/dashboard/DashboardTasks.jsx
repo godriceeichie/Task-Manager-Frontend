@@ -8,7 +8,7 @@ import {
   NewTaskBtn,
   TodoTasks,
 } from "../../components";
-import { Overlay, Loader,Flex, Center } from "@mantine/core";
+import { Loader } from "@mantine/core";
 import instance from "../../config/api";
 import useTaskContext from "../../hooks/useTaskContext";
 
@@ -46,7 +46,6 @@ const DashboardTasks = () => {
       instance
       .get("/tasks")
       .then((response) => {
-        console.log(response)
         dispatch({type: 'SET_TASKS', payload: response.data})
         setIsLoading(false)
       })
