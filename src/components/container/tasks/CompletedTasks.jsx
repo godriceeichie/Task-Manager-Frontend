@@ -3,7 +3,7 @@ import moreVertIcon from "../../../assets/img/more_vert_black_24dp.svg";
 import AvatarGroup from './AvatarGroup';
 import commentIcon from "../../../assets/img/comment_black_24dp.svg";
 import TaskModal from './TaskModal';
-
+import { formatDistanceToNow } from 'date-fns';
 
 const CompletedTasks = ({tasks}) => {
     const filterCompletedTasks = () => {
@@ -42,10 +42,11 @@ const CompletedTasks = ({tasks}) => {
                             <p>{task.description}</p>
                         </div>
                         <div
-                            style={{ display: "flex", justifyContent: "space-between" }}
+                            style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}
                         >
-                            <AvatarGroup />
-                            <img src={commentIcon} alt="" />
+                            {/* <AvatarGroup />
+                            <img src={commentIcon} alt="" /> */}
+                            <span style={{justifySelf: 'end'}} className='created-at'>{formatDistanceToNow(new Date(task.createdAt), {addSuffix: true})}</span>
                         </div>
                     </div>
                 )

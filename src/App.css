@@ -1270,6 +1270,11 @@ a {
   font-weight: 500;
 }
 
+.created-at{
+  color: #888;
+  font-size: .75rem;
+}
+
 @container (width <= 530px) {
   .hero-img {
     width: 80%;

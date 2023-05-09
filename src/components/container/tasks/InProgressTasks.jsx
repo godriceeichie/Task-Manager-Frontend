@@ -4,6 +4,7 @@ import AvatarGroup from './AvatarGroup';
 import commentIcon from "../../../assets/img/comment_black_24dp.svg";
 import TaskModal from './TaskModal';
 import { AiOutlineClockCircle } from 'react-icons/ai'
+import { formatDistanceToNow } from 'date-fns';
 
 const InProgressTasks = ({tasks}) => {
     const filterInProgressTasks = () => {
@@ -43,14 +44,14 @@ const InProgressTasks = ({tasks}) => {
                             <p>{task.description}</p>
                         </div>
                         <div
-                            style={{ display: "flex", justifyContent: "space-between" }}
+                            style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}
                         >
                             {/* <AvatarGroup /> */}
                             <span className='time-left'>
                                 <AiOutlineClockCircle color='#ebb02d'/>
                                 {(daysLeft > 0) && `${daysLeft} days left`}
                             </span>
-                            <img src={commentIcon} alt="" />
+                            <span className='created-at'>{formatDistanceToNow(new Date(task.createdAt), {addSuffix: true})}</span>
                         </div>
                     </div>
                 )

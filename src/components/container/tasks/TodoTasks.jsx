@@ -47,14 +47,14 @@ const TodoTasks = ({tasks}) => {
                             <p>{task.description}</p>
                         </div>
                         <div
-                            style={{ display: "flex", justifyContent: "space-between" }}
+                            style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}
                         >
                             {/* <AvatarGroup /> */}
                             <span className='time-left'>
                                 <AiOutlineClockCircle color='#e74646'/>
                                 {(daysLeft > 0) && `${daysLeft} days left`}
                             </span>
-                            <img src={commentIcon} alt="" />
+                            <span className='created-at'>{formatDistanceToNow(new Date(task.createdAt), {addSuffix: true})}</span>
                         </div>
                     </div>
                 )
