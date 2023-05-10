@@ -22,7 +22,9 @@ const DashboardTasks = () => {
     setToggleTaskView(!toggleTaskView);
   };
 
+
   const { render, viewTaskForm, setViewTaskForm } = NewTaskBtn();
+  const { createTaskForm } = CreateTask(viewTaskForm, setViewTaskForm)
   const dashboardMainStyle = {
     marginTop: '0.75rem',
     display: 'grid',
@@ -85,16 +87,15 @@ const DashboardTasks = () => {
         )
         : (
           <main className="dashboardTasks__grid" style={dashboardMainStyle}>
-            <TodoTasks tasks={tasks} />
+            <TodoTasks tasks={tasks} viewTaskForm={viewTaskForm} setViewTaskForm={setViewTaskForm} />
             <InProgressTasks tasks={tasks} />
             <CompletedTasks tasks={tasks} /> 
           </main>
         )
       }
-      <CreateTask
-        viewTaskForm={viewTaskForm}
-        setViewTaskForm={setViewTaskForm}
-      />    
+      {
+        createTaskForm
+      }
     </section>
   );
 };

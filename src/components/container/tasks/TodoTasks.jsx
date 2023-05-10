@@ -6,7 +6,7 @@ import TaskModal from './TaskModal'
 import { AiOutlineClockCircle } from 'react-icons/ai'
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
-const TodoTasks = ({tasks}) => {
+const TodoTasks = ({tasks, setViewTaskForm, viewTaskForm }) => {
     const filterTodoTasks = () => {
         // console.log(tasks)
        return(
@@ -32,7 +32,6 @@ const TodoTasks = ({tasks}) => {
            }
             {(tasks) && filterTodoTasks().map(task => {
                 let daysLeft = (new Date(task.dueDate).getDate()) - (new Date().getDate())
-                // if(task._id === '6459499698915d5eb9790e16') console.log(task)
                 return(
                     <div className="dashboardTasks__grid-items" key={task._id}>
                         <header>
@@ -40,7 +39,7 @@ const TodoTasks = ({tasks}) => {
                                 {task.category}
                             </span>
                             {/* <img src={moreVertIcon} alt="" /> */}
-                            <TaskModal task={task}/>
+                            <TaskModal task={task} setViewTaskForm={setViewTaskForm} viewTaskForm={viewTaskForm} inputFields={{}}/>
                         </header>
                         <div className="dashboardTasks__grid-itemsContent">
                             <h3>{task.name}</h3>
@@ -54,7 +53,8 @@ const TodoTasks = ({tasks}) => {
                                 <AiOutlineClockCircle color='#e74646'/>
                                 {(daysLeft > 0) && `${daysLeft} days left`}
                             </span>
-                            <span className='created-at'>{formatDistanceToNow(new Date(task.createdAt), {addSuffix: true})}</span>
+                            <span className='created-at'>{formatDistanceToNow((new Date(task.createdAt).getFullYear(), new Date(task.createdAt).getMonth(), new Date(task.createdAt).getDate(), new Date(task.createdAt).getTime()), {addSuffix: true})}</span>
+                            
                         </div>
                     </div>
                 )

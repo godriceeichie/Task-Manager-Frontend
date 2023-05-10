@@ -51,7 +51,7 @@ const InProgressTasks = ({tasks}) => {
                                 <AiOutlineClockCircle color='#ebb02d'/>
                                 {(daysLeft > 0) && `${daysLeft} days left`}
                             </span>
-                            <span className='created-at'>{formatDistanceToNow(new Date(task.createdAt), {addSuffix: true})}</span>
+                            <span className='created-at'>{formatDistanceToNow((new Date(task.createdAt).getFullYear(), new Date(task.createdAt).getMonth(), new Date(task.createdAt).getDate(), new Date(task.createdAt).getTime()), {addSuffix: true})}</span>
                         </div>
                     </div>
                 )

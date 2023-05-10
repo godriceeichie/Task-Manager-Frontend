@@ -46,7 +46,7 @@ const CompletedTasks = ({tasks}) => {
                         >
                             {/* <AvatarGroup />
                             <img src={commentIcon} alt="" /> */}
-                            <span style={{justifySelf: 'end'}} className='created-at'>{formatDistanceToNow(new Date(task.createdAt), {addSuffix: true})}</span>
+                            <span style={{justifySelf: 'end'}} className='created-at'>{formatDistanceToNow((new Date(task.createdAt).getFullYear(), new Date(task.createdAt).getMonth(), new Date(task.createdAt).getDate(), new Date(task.createdAt).getTime()), {addSuffix: true})}</span>
                         </div>
                     </div>
                 )
