@@ -52,7 +52,7 @@ const TodoTasks = ({tasks}) => {
                             {/* <AvatarGroup /> */}
                             <span className='time-left'>
                                 <AiOutlineClockCircle color='#e74646'/>
-                                {(daysLeft > 0) && `${daysLeft} days left`}
+                                {(daysLeft > 0) ? `${daysLeft} days left` : `Time has expired`}
                             </span>
                             <span className='created-at'>{formatDistanceToNow(new Date(task.createdAt), {addSuffix: true})}</span>
                         </div>

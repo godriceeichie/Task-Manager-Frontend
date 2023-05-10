@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import UseScroll from '../../custom hooks/useScroll';
+import UseScroll from '../../hooks/useScroll';
 
 
 const Navbar = ({ url, showHamburgerMenu }) => {

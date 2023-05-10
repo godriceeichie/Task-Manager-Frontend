@@ -1,12 +1,16 @@
 import React from 'react';
-import moreVertIcon from "../../../assets/img/more_vert_black_24dp.svg";
-import AvatarGroup from './AvatarGroup';
-import commentIcon from "../../../assets/img/comment_black_24dp.svg";
+// import moreVertIcon from "../../../assets/img/more_vert_black_24dp.svg";
+// import AvatarGroup from './AvatarGroup';
+// import commentIcon from "../../../assets/img/comment_black_24dp.svg";
 import TaskModal from './TaskModal';
 import { AiOutlineClockCircle } from 'react-icons/ai'
 import { formatDistanceToNow } from 'date-fns';
+import { TaskFormControls } from '../../../contexts/TaskFormControlsContext';
+
 
 const InProgressTasks = ({tasks}) => {
+    const { } = TaskFormControls()
+
     const filterInProgressTasks = () => {
         return (
             tasks.filter(task => {
@@ -49,7 +53,7 @@ const InProgressTasks = ({tasks}) => {
                             {/* <AvatarGroup /> */}
                             <span className='time-left'>
                                 <AiOutlineClockCircle color='#ebb02d'/>
-                                {(daysLeft > 0) && `${daysLeft} days left`}
+                                {(daysLeft > 0) ? `${daysLeft} days left` : `Time has expired`}
                             </span>
                             <span className='created-at'>{formatDistanceToNow(new Date(task.createdAt), {addSuffix: true})}</span>
                         </div>

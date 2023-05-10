@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import gridIcon from "../../assets/img/grid_view_black_24dp.svg";
 import listIcon from "../../assets/img/view_list_black_24dp.svg";
 import {
@@ -12,17 +12,20 @@ import { Loader } from "@mantine/core";
 import instance from "../../config/api";
 import useTaskContext from "../../hooks/useTaskContext";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import { TaskFormControlsProvider } from "../../contexts/TaskFormControlsContext";
+
 
 const DashboardTasks = () => {
   const [toggleTaskView, setToggleTaskView] = useState(false);
   const [isLoading, setIsLoading] = useState(true)
   const { tasks, dispatch } = useTaskContext()
 
+
   const toggleActiveClass = () => {
     setToggleTaskView(!toggleTaskView);
   };
 
-  const { render, viewTaskForm, setViewTaskForm } = NewTaskBtn();
+  const { render } = NewTaskBtn();
   const dashboardMainStyle = {
     marginTop: '0.75rem',
     display: 'grid',
@@ -77,26 +80,26 @@ const DashboardTasks = () => {
         {render}
       </header>
       {/* w={'70vw'} h={'50vh'} */}
-      {
-        isLoading ? (
-          <main className="dashboardTasks__grid" style={dashboardLoadingStyle}>
-            <Loader />
-          </main>
-        )
-        : (
-          <main className="dashboardTasks__grid" style={dashboardMainStyle}>
-            <TodoTasks tasks={tasks} />
-            <InProgressTasks tasks={tasks} />
-            <CompletedTasks tasks={tasks} /> 
-          </main>
-        )
-      }
-      <CreateTask
-        viewTaskForm={viewTaskForm}
-        setViewTaskForm={setViewTaskForm}
-      />    
+      <TaskFormControlsProvider>
+        {
+            isLoading ? (
+              <main className="dashboardTasks__grid" style={dashboardLoadingStyle}>
+                <Loader />
+              </main>
+            )
+            : (
+              <main className="dashboardTasks__grid" style={dashboardMainStyle}>
+                <TodoTasks tasks={tasks} />
+                <InProgressTasks tasks={tasks} />
+                <CompletedTasks tasks={tasks} /> 
+              </main>
+            )
+          }
+          <CreateTask
+          />    
+      </TaskFormControlsProvider>
     </section>
   );
 };
 
-export default DashboardTasks;
+export default { DashboardTasks };
