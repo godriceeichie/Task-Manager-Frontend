@@ -5,11 +5,10 @@ import { AiOutlineMail } from 'react-icons/ai';
 import { CSSTransition } from "react-transition-group";
 import { MdOutlineVisibilityOff, MdOutlineVisibility } from 'react-icons/md'
 import { CloseButton } from '../../components';
-import useTransition from '../../custom hooks/useTransition';
+import useTransition from '../../hooks/useTransition';
 import { useForm, zodResolver } from '@mantine/form';
 import { signUpSchema } from '../../schema';
 import { request } from '../../config';
-
 
 
 const SignUp = () => {

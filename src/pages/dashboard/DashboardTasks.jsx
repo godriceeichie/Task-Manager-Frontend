@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import gridIcon from "../../assets/img/grid_view_black_24dp.svg";
 import listIcon from "../../assets/img/view_list_black_24dp.svg";
 import {
@@ -12,11 +12,14 @@ import { Loader } from "@mantine/core";
 import instance from "../../config/api";
 import useTaskContext from "../../hooks/useTaskContext";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import { TaskFormControlsProvider } from "../../contexts/TaskFormControlsContext";
+
 
 const DashboardTasks = () => {
   const [toggleTaskView, setToggleTaskView] = useState(false);
   const [isLoading, setIsLoading] = useState(true)
   const { tasks, dispatch } = useTaskContext()
+
 
   const toggleActiveClass = () => {
     setToggleTaskView(!toggleTaskView);
@@ -100,4 +103,4 @@ const DashboardTasks = () => {
   );
 };
 
-export default DashboardTasks;
+export default { DashboardTasks };

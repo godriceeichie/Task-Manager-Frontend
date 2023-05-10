@@ -1,6 +1,6 @@
 import React from 'react';
 import { CloseButton } from '../../components';
-import useTransition from '../../custom hooks/useTransition';
+import useTransition from '../../hooks/useTransition';
 import { CSSTransition } from "react-transition-group";
 import { Input, PasswordInput, Button, rem, TextInput } from '@mantine/core';
 import { AiOutlineLock } from 'react-icons/ai'
@@ -9,7 +9,6 @@ import { MdOutlineVisibilityOff, MdOutlineVisibility } from 'react-icons/md'
 import { Link } from 'react-router-dom';
 import { loginSchema } from '../../schema';
 import { useForm, zodResolver } from '@mantine/form';
-
 
 const Login = () => {
     const { showSignupHeading, showEmailBox, showPasswordBox, showForgottenPassword, showSignupButton, showSignedUp } = useTransition()

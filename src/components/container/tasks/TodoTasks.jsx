@@ -51,7 +51,7 @@ const TodoTasks = ({tasks, setViewTaskForm, viewTaskForm }) => {
                             {/* <AvatarGroup /> */}
                             <span className='time-left'>
                                 <AiOutlineClockCircle color='#e74646'/>
-                                {(daysLeft > 0) && `${daysLeft} days left`}
+                                {(daysLeft > 0) ? `${daysLeft} days left` : `Time has expired`}
                             </span>
                             <span className='created-at'>{formatDistanceToNow((new Date(task.createdAt).getFullYear(), new Date(task.createdAt).getMonth(), new Date(task.createdAt).getDate(), new Date(task.createdAt).getTime()), {addSuffix: true})}</span>
                             

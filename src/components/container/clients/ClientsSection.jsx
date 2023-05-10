@@ -1,5 +1,5 @@
 import React from 'react';
-import UseScroll from '../../../custom hooks/useScroll';
+import UseScroll from '../../../hooks/useScroll';
 
 const ClientsSection = () => {
     

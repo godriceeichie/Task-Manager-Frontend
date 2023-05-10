@@ -20,6 +20,12 @@ export const tasksReducer = (state, action) => {
                     })
                 )
             }
+        case 'UPDATE_TASK':
+            state.tasks.forEach(task => {
+                if(task._id === action.payload){
+                    
+                }
+            })
         default:
             return state
     }
