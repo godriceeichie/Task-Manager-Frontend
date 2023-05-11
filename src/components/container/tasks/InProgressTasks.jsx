@@ -5,11 +5,11 @@ import React from 'react';
 import TaskModal from './TaskModal';
 import { AiOutlineClockCircle } from 'react-icons/ai'
 import { formatDistanceToNow } from 'date-fns';
-import { TaskFormControls } from '../../../contexts/TaskFormControlsContext';
-
+import { useDueDate } from '../../../hooks/useDueDate';
 
 const InProgressTasks = ({tasks}) => {
-    const { } = TaskFormControls()
+    //The hook holding the function to calc and format the due date of the tasks
+    const { calculateTimeRemaining, formatTimeRemaining } = useDueDate()
 
     const filterInProgressTasks = () => {
         return (
@@ -35,6 +35,7 @@ const InProgressTasks = ({tasks}) => {
             }
             {tasks && filterInProgressTasks().map(task => {
                 let daysLeft = (new Date(task.dueDate).getDate()) - (new Date().getDate())
+                const timeRemaining = calculateTimeRemaining(task.dueDate)
                 return (
                     <div className="dashboardTasks__grid-items" key={task._id}>
                         <header>
@@ -53,7 +54,8 @@ const InProgressTasks = ({tasks}) => {
                             {/* <AvatarGroup /> */}
                             <span className='time-left'>
                                 <AiOutlineClockCircle color='#ebb02d'/>
-                                {(daysLeft > 0) ? `${daysLeft} days left` : `Time has expired`}
+                                {/* {(daysLeft > 0) ? `${daysLeft} days left` : `Time has expired`} */}
+                                {`${formatTimeRemaining(timeRemaining)}`}
                             </span>
                             <span className='created-at'>{formatDistanceToNow((new Date(task.createdAt).getFullYear(), new Date(task.createdAt).getMonth(), new Date(task.createdAt).getDate(), new Date(task.createdAt).getTime()), {addSuffix: true})}</span>
                         </div>

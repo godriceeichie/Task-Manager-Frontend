@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import gridIcon from "../../assets/img/grid_view_black_24dp.svg";
 import listIcon from "../../assets/img/view_list_black_24dp.svg";
 import {
@@ -11,9 +11,8 @@ import {
 import { Loader } from "@mantine/core";
 import instance from "../../config/api";
 import useTaskContext from "../../hooks/useTaskContext";
-import formatDistanceToNow from "date-fns/formatDistanceToNow";
-import { TaskFormControlsProvider } from "../../contexts/TaskFormControlsContext";
 
+// import { TaskFormControlsProvider } from "../../contexts/TaskFormControlsContext";
 
 const DashboardTasks = () => {
   const [toggleTaskView, setToggleTaskView] = useState(false);
@@ -25,9 +24,12 @@ const DashboardTasks = () => {
     setToggleTaskView(!toggleTaskView);
   };
 
+  
 
   const { render, viewTaskForm, setViewTaskForm } = NewTaskBtn();
   const { createTaskForm } = CreateTask(viewTaskForm, setViewTaskForm)
+  
+
   const dashboardMainStyle = {
     marginTop: '0.75rem',
     display: 'grid',
@@ -103,4 +105,4 @@ const DashboardTasks = () => {
   );
 };
 
-export default { DashboardTasks };
+export default DashboardTasks;

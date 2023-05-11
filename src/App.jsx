@@ -18,7 +18,7 @@ import {
 import { MainContent } from "./components";
 
 
-function App() {
+const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />}>
