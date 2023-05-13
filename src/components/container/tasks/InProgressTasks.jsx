@@ -7,7 +7,7 @@ import { AiOutlineClockCircle } from 'react-icons/ai'
 import { formatDistanceToNow } from 'date-fns';
 import { useDueDate } from '../../../hooks/useDueDate';
 
-const InProgressTasks = ({tasks}) => {
+const InProgressTasks = ({tasks, setViewTaskForm, viewTaskForm}) => {
     //The hook holding the function to calc and format the due date of the tasks
     const { calculateTimeRemaining, formatTimeRemaining } = useDueDate()
 
@@ -42,7 +42,7 @@ const InProgressTasks = ({tasks}) => {
                             <span className="dashboardTasks__grid-itemsCategory inProgress">
                                 {task.category}
                             </span>
-                            <TaskModal task={task}/>
+                            <TaskModal task={task} setViewTaskForm={setViewTaskForm} viewTaskForm={viewTaskForm}/>
                         </header>
                         <div className="dashboardTasks__grid-itemsContent">
                             <h3>{task.name}</h3>

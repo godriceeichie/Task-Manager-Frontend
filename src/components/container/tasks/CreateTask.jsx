@@ -30,7 +30,7 @@ const CreateTask = (viewTaskForm, setViewTaskForm) => {
   };
 
   const { dispatch } = useTaskContext()
-
+  console.log(name)
   //function for submitting the task
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -75,6 +75,7 @@ const CreateTask = (viewTaskForm, setViewTaskForm) => {
 
   return {
     fields: {name, setname, setdescription, setcategory, setstatus, setpriority, setdueDate},
+    setViewTaskForm,
     createTaskForm: (
       <aside
         className={

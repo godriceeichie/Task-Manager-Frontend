@@ -29,7 +29,7 @@ const TaskModal = ({ task, setViewTaskForm, viewTaskForm }) => {
       setViewTaskForm(true)
       instance.get(`/tasks/${task._id}`)
       .then(response => {
-        // console.log(response.data)
+        console.log(response.data)
         fields.setname(response.data.name)
         console.log(fields.name)
       }, (err) => {

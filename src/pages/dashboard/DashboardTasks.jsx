@@ -93,7 +93,7 @@ const DashboardTasks = () => {
         : (
           <main className="dashboardTasks__grid" style={dashboardMainStyle}>
             <TodoTasks tasks={tasks} viewTaskForm={viewTaskForm} setViewTaskForm={setViewTaskForm} />
-            <InProgressTasks tasks={tasks} />
+            <InProgressTasks tasks={tasks} viewTaskForm={viewTaskForm} setViewTaskForm={setViewTaskForm}/>
             <CompletedTasks tasks={tasks} /> 
           </main>
         )

@@ -9,13 +9,15 @@ import useTransition from '../../hooks/useTransition';
 import { useForm, zodResolver } from '@mantine/form';
 import { signUpSchema } from '../../schema';
 import { request } from '../../config';
+import PasswordBox from '../../components/container/PasswordBox';
 
 
 const SignUp = () => {
     const { showSignupHeading, showUsernameBox, showEmailBox, showPasswordBox, showSignupButton, showSignedUp } = useTransition()
 
     const [requestUpdate, setRequestUpdate] = useState({ isLoading: false });
-
+    const [value, setValue] = useState('');
+    console.log(value)
 
     useEffect(() => {
         console.log(requestUpdate)
@@ -69,10 +71,10 @@ const SignUp = () => {
                     unmountOnExit
                 >
                     <TextInput
+                        withAsterisk
                         placeholder="Enter username"
                         label="Username"
                         radius="lg"
-                        size="md"
                         name='username'
                         {...signUpForm.getInputProps('username')}
 
@@ -88,11 +90,11 @@ const SignUp = () => {
                 >
 
                     <TextInput
+                        withAsterisk    
                         icon={<AiOutlineMail />}
                         label="Email"
                         placeholder="Your email"
                         radius="lg"
-                        size="md"
                         name='email'
                         {...signUpForm.getInputProps("email")}
 
@@ -106,18 +108,8 @@ const SignUp = () => {
                     classNames="password-box"
                     unmountOnExit
                 >
-                    <PasswordInput
-                        label="Password"
-                        placeholder="Password"
-                        description="Password must include at least one letter, number and special character"
-                        radius="lg"
-                        size="md"
-                        visibilityToggleIcon={({ reveal }) =>
-                            reveal ? <MdOutlineVisibilityOff /> : <MdOutlineVisibility />
-                        }
-                        name='password'
-                        {...signUpForm.getInputProps("password")}
-                    />
+
+                    <PasswordBox signUpForm={signUpForm}/>
                 </CSSTransition>
                 <CSSTransition
                     in={showPasswordBox}
@@ -125,7 +117,7 @@ const SignUp = () => {
                     classNames="password-box"
                     unmountOnExit
                 >
-                    <PasswordInput
+                    {/* <PasswordInput
                         label="Confirm Password"
                         placeholder="Password"
                         radius="lg"
@@ -135,9 +127,22 @@ const SignUp = () => {
                         }
                         name='confirmPassword'
                         {...signUpForm.getInputProps("confirmPassword")}
+                    /> */}
+                    <PasswordInput
+                        withAsterisk
+                        label="Confirm Password"
+                        placeholder="Confirm Password"
+                        radius="lg"
+                        visibilityToggleIcon={({ reveal }) =>
+                            reveal ? <MdOutlineVisibilityOff /> : <MdOutlineVisibility />
+                        }
+                        value={value}
+                        onChange={(e) => setValue(e.target.value)}
+                        name='confirmPassword'
+                        {...signUpForm.getInputProps("confirmPassword")}
                     />
+                    
                 </CSSTransition>
-
 
 
                 <section className="signup__form-ending">

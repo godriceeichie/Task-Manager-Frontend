@@ -9,27 +9,22 @@ export const signUpSchema = z
   .object({
     username: z
       .string()
-      .min(2, { message: "Username must be at least 2 characters long" }),
+      .min(2, { message: "Username must be at least 2 characters long" })
+      .optional(),
     email: z
       .string()
       .email({ message: "Invalid email format!" })
-      .min(1, { message: "Please enter a valid email address!" }),
+      .min(1, { message: "Please enter a valid email address!" })
+      .optional(),
     password: z
       .string()
       .min(5, { message: "Password must be at least 6 characters long" }),
     confirmPassword: z
       .string()
-      .min(5, { message: "Must be 5 or more characters long" }),
   })
-  .superRefine(({ confirmPassword, password }, ctx) => {
-    if (confirmPassword !== password) {
-      ctx.addIssue({
-        code: "custom",
-        message: "The passwords did not match",
-      });
-    }
-  });
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords don't match",
+    path: ["confirmPassword"]
+  }) 
 
-// const userSchema = z.object({
-//     username: z.string()
-// })
+// console.log(signUpSchema.parse({password: "asdf" , confirmPassword: "fdsa"}))
