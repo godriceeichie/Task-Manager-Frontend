@@ -16,8 +16,6 @@ const SignUp = () => {
     const { showSignupHeading, showUsernameBox, showEmailBox, showPasswordBox, showSignupButton, showSignedUp } = useTransition()
 
     const [requestUpdate, setRequestUpdate] = useState({ isLoading: false });
-    const [value, setValue] = useState('');
-    console.log(value)
 
     useEffect(() => {
         console.log(requestUpdate)
@@ -136,8 +134,6 @@ const SignUp = () => {
                         visibilityToggleIcon={({ reveal }) =>
                             reveal ? <MdOutlineVisibilityOff /> : <MdOutlineVisibility />
                         }
-                        value={value}
-                        onChange={(e) => setValue(e.target.value)}
                         name='confirmPassword'
                         {...signUpForm.getInputProps("confirmPassword")}
                     />

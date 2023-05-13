@@ -45,8 +45,6 @@ function PasswordBox({ signUpForm }) {
     <PasswordRequirement key={index} label={requirement.label} meets={requirement.re.test(passwordValue)} />
   ));
 
-  console.log(signUpForm.values.password)
-
   const strength = getStrength(passwordValue);
   const color = strength === 100 ? 'teal' : strength > 50 ? 'yellow' : 'red';
 
