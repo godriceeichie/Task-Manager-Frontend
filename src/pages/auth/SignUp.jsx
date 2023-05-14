@@ -36,7 +36,9 @@ const SignUp = () => {
 
     const handleSignUpSubmit = (data, e) => {
         signup(data)
-        signUpForm.reset()
+        if(!error){
+            signUpForm.reset()
+        }
     }
 
     return (
@@ -135,7 +137,9 @@ const SignUp = () => {
                     />
                     
                 </CSSTransition>
-
+                {
+                    error && <div className='errorMessage'>{error}</div>
+                }
 
                 <section className="signup__form-ending">
                     <CSSTransition

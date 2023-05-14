@@ -4,7 +4,7 @@ import instance from "../config/api"
 
 
 export const useSignup = () => {
-    const [error, setError] = useState(null)
+    const [error, setError] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const { dispatch } = useAuthContext()
 
@@ -20,9 +20,9 @@ export const useSignup = () => {
             dispatch({type: 'LOGIN', payload: response.data})
             setIsLoading(false)
         }, (error) => {
-            console.log(error)
-            setIsLoading(false  )
-            setError(error.message)
+            console.log(error.response.data.error)
+            setIsLoading(false)
+            setError(error.response.data.error)
         })
     }
     return { signup, isLoading, error}
