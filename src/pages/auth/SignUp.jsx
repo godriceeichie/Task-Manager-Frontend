@@ -10,6 +10,7 @@ import { useForm, zodResolver } from '@mantine/form';
 import { signUpSchema } from '../../schema';
 import { request } from '../../config';
 import PasswordBox from '../../components/container/PasswordBox';
+import { useSignup } from '../../hooks/useSignUp';
 
 
 const SignUp = () => {
@@ -31,8 +32,11 @@ const SignUp = () => {
         
     })
 
+    const {error, isLoading, signup} = useSignup()
+
     const handleSignUpSubmit = (data, e) => {
-        setEmail(data)
+        signup(data)
+        signUpForm.reset()
     }
 
     return (
@@ -140,7 +144,7 @@ const SignUp = () => {
                         classNames="signup-button"
                         unmountOnExit
                     >
-                        <Button color="green" styles={(theme) => ({
+                        <Button color="green" loading={isLoading} styles={(theme) => ({
                             root: {
                                 width: rem(150),
                                 height: rem(38),
