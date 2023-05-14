@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
-import { Input, PasswordInput, Button, rem, TextInput } from '@mantine/core';
+import { PasswordInput, Button, rem, TextInput } from '@mantine/core';
 import { AiOutlineMail } from 'react-icons/ai';
 import { CSSTransition } from "react-transition-group";
 import { MdOutlineVisibilityOff, MdOutlineVisibility } from 'react-icons/md'
@@ -16,11 +16,9 @@ const SignUp = () => {
     const { showSignupHeading, showUsernameBox, showEmailBox, showPasswordBox, showSignupButton, showSignedUp } = useTransition()
 
     const [requestUpdate, setRequestUpdate] = useState({ isLoading: false });
-
-    useEffect(() => {
-        console.log(requestUpdate)
-    }, [requestUpdate])
-
+    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('');
 
     const signUpForm = useForm({
         validate: zodResolver(signUpSchema),
@@ -30,30 +28,20 @@ const SignUp = () => {
             password: "",
             confirmPassword: ""
         }
+        
     })
 
-    function handleSignUpSubmit(data) {
-        console.log(data)
-        setRequestUpdate({ ...requestUpdate, isLoading: true })
-
-        request.post('/user/create', data)
-            .then(res =>
-                setRequestUpdate({ ...requestUpdate, res, isLoading: false })
-            )
-            .catch(err => setRequestUpdate({ ...requestUpdate, err, isLoading: false }))
-
+    const handleSignUpSubmit = (data, e) => {
+        setEmail(data)
     }
-
-    // const { values, errors, submitting, handleSubmit } = signUpForm
-    
-    useEffect(() => {
-
-    }, [requestUpdate])
 
     return (
         <section className='signup-wrapper'>
             <CloseButton />
-            <form className="signup" method='post' action='post' onSubmit={signUpForm.onSubmit(data => console.log(data))}>
+            <form className="signup" onSubmit={signUpForm.onSubmit((data) => {
+                console.log(data)
+                handleSignUpSubmit(data)
+            })}>
                 <CSSTransition
                     in={showSignupHeading}
                     timeout={500}
@@ -74,8 +62,12 @@ const SignUp = () => {
                         label="Username"
                         radius="lg"
                         name='username'
+                        // value={username}
+                        // onChange={(newValue) => {
+                        //     setUsername(newValue.target.value)
+                        // }}
                         {...signUpForm.getInputProps('username')}
-
+                        
                     />
                 </CSSTransition>
 
@@ -156,7 +148,7 @@ const SignUp = () => {
                                 alignSelf: 'center',
                             }
                         })}
-                            type={'submit'}
+                            type="submit"
                         >
                             Sign Up
                         </Button>

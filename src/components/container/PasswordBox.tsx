@@ -48,7 +48,6 @@ function PasswordBox({ signUpForm }) {
   const strength = getStrength(passwordValue);
   const color = strength === 100 ? 'teal' : strength > 50 ? 'yellow' : 'red';
 
-  
   //to validate the password box
   const passwordForm = useForm({
     validate: zodResolver(signUpSchema),
@@ -67,13 +66,16 @@ function PasswordBox({ signUpForm }) {
             <PasswordInput
               label="Your password"
               placeholder="Your password"
-              // value={signUpForm.values.password}
+              value={passwordValue}
               onChange={(newValue) => {
                 setPasswordValue(newValue.target.value)
+                signUpForm.setFieldValue("password", newValue.target.value)
+                signUpForm.setFieldError("password", signUpForm.errors.password)
               }}
               name='password'
-              
               radius={"lg"}
+              {...signUpForm.getInputProps("password")}
+              
             />
           </div>
         </Popover.Target>
