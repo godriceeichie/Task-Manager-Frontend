@@ -2,17 +2,24 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import SidebarLinks from '../../data/SidebarLinks'
 import MinorSidebarLinks from '../../data/MinorSidebarLinks'
+import LogOut from '../container/LogOut'
+import { useDisclosure } from '@mantine/hooks'
 
 
 function DashboardSidebar() {
   const SidebarLink = useRef()
   const [linkIndex, setlinkIndex] = useState();
 
+  //state to control the logout modal
+  const [opened, { open, close }] = useDisclosure(false);
+
   const sidebarLinkClick = (index) => {
     setlinkIndex(index)
     console.log(index)
   }
-
+  
+  const { render } = LogOut(opened, close)
+  
   return (
     <aside className='dashboardSidebar'>
         <header className='dashboardSidebar__header'>
@@ -43,8 +50,8 @@ function DashboardSidebar() {
               {
                 MinorSidebarLinks.map(({title, icon, index}) => {
                   return(
-                    <li onClick={() => sidebarLinkClick(index, path)} key={index} className={(linkIndex === index) ? 'active' : ''}>
-                      <Link>
+                    <li onClick={() => sidebarLinkClick(index)} key={index} className={(linkIndex === index) ? 'active' : ''}>
+                      <Link onClick={(title === 'Log out') && open}>
                         <img src={icon} alt="" />
                         <span className='dashboardSidebar__nav-name'>{title}</span>
                       </Link>
@@ -52,6 +59,7 @@ function DashboardSidebar() {
                   )
                 })
               }
+              {render}
             </div>
           </ul>
         </nav>

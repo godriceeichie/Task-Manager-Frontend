@@ -4,6 +4,7 @@ import UseScroll from '../../hooks/useScroll';
 
 
 const Navbar = ({ url, showHamburgerMenu }) => {
+    
     //It tracks the scroll position
     const { scrollPosition } = UseScroll()
     const navbarStyle = {

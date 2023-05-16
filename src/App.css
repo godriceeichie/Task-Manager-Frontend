@@ -1101,6 +1101,10 @@ a {
 
 }
 
+.mantine-13qt2rl{
+  margin-left: unset;
+}
+
 .taskStatus{
   height: 2rem;
   border-radius: .5rem;
@@ -1274,6 +1278,28 @@ a {
 .created-at{
   color: #888;
   font-size: .75rem;
+}
+
+.logout-body{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  gap: 1.25rem;
+}
+
+.logoutModalText{
+  color: red;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.logout-btn{
+  /* background-color: #ddd; */
+  padding: .5rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid red;
+  color: red;
 }
 
 @container (width <= 530px) {

@@ -30,7 +30,6 @@ const CreateTask = (viewTaskForm, setViewTaskForm) => {
   };
 
   const { dispatch } = useTaskContext()
-  console.log(name)
   //function for submitting the task
   const handleSubmit = (e) => {
     e.preventDefault();

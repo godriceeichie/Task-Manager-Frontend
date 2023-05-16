@@ -14,7 +14,8 @@ export const useSignup = () => {
         instance.post('/user/signup', data)
         .then((response) => {
             //to store token on the browser
-            localStorage.setItem('user', response.data.token)
+            localStorage.setItem('user', JSON.stringify(response.data))
+            console.log(localStorage.getItem('user'))
 
             //update the auth context with the user 
             dispatch({type: 'LOGIN', payload: response.data})
@@ -24,6 +25,7 @@ export const useSignup = () => {
             setIsLoading(false)
             setError(error.response.data.error)
         })
+        
     }
     return { signup, isLoading, error}
 }
