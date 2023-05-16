@@ -1,7 +1,10 @@
 import React from 'react';
 import profilePic from '../../assets/img/profilepic.png'
+import useAuthContext from '../../hooks/useAuthContext';
 
 const DashboardHeader = () => {
+    const { user } = useAuthContext()
+    console.log(user)
     return (
         <header className='dashboardHeader'>
             <div className='dashboardHeader__container'>
@@ -19,8 +22,10 @@ const DashboardHeader = () => {
                     </button>
                     <div className='userInfo__details'>
                         <div>
-                            <h4>David Hamon</h4>
-                            <h5>davidharmon@gmail.com</h5>
+                            <h4>{user && user.username}</h4>
+                            <h5>
+                                {user && user.email}
+                            </h5>
                         </div>
                     </div>
                 </div>

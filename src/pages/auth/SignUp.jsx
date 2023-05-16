@@ -34,7 +34,7 @@ const SignUp = () => {
 
     const {error, isLoading, signup} = useSignup()
 
-    const handleSignUpSubmit = (data, e) => {
+    const handleSignUpSubmit = (data) => {
         signup(data)
         if(!error){
             signUpForm.reset()

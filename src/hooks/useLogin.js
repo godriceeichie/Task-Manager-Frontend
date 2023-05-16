@@ -3,15 +3,16 @@ import useAuthContext from './useAuthContext'
 import instance from "../config/api"
 
 
-export const useSignup = () => {
-    const [error, setError] = useState(null)
+export const useLogin = () => {
+    const [error, setError] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const { dispatch } = useAuthContext()
 
-    const signup = (data) => {
+    const login = (data) => {
         setIsLoading(true)
         setError(null)
-        instance.post('/user/signup', data)
+
+        instance.post('/user/login', data)
         .then((response) => {
             //to store token on the browser
             localStorage.setItem('user', JSON.stringify(response.data))
@@ -20,13 +21,12 @@ export const useSignup = () => {
             //update the auth context with the user 
             dispatch({type: 'LOGIN', payload: response.data})
             setIsLoading(false)
-            setError(null)
         }, (error) => {
-            console.log(error)
+            console.log(error.response.data.eror)
             setIsLoading(false)
-            setError(error)
+            setError(error.response.data.error)
         })
         
     }
-    return { signup, isLoading, error}
+    return { login, isLoading, error }
 }

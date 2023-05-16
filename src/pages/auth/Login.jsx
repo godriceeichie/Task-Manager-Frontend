@@ -9,9 +9,11 @@ import { MdOutlineVisibilityOff, MdOutlineVisibility } from 'react-icons/md'
 import { Link } from 'react-router-dom';
 import { loginSchema } from '../../schema';
 import { useForm, zodResolver } from '@mantine/form';
+import { useLogin } from '../../hooks/useLogin';
 
 const Login = () => {
     const { showSignupHeading, showEmailBox, showPasswordBox, showForgottenPassword, showSignupButton, showSignedUp } = useTransition()
+    const { login, error, isLoading } = useLogin()
     const loginForm = useForm({
         validate: zodResolver(loginSchema),
         initialValues: {
@@ -20,13 +22,20 @@ const Login = () => {
         }
     })
     const handleLoginSubmit = (data) => {
-        console.log(data);
+        // console.log(data)
+        login(data)
+        if(!error){
+            loginForm.reset()
+        }
     }
     return (
         <div className='login-wrapper'>
             <CloseButton />
             <div className="login-gradient">
-                <form action="post" className='login' onSubmit={loginForm.onSubmit(data => handleLoginSubmit(data))}>
+                <form className='login' onSubmit={loginForm.onSubmit(data => {
+                    
+                    handleLoginSubmit(data)
+                })}>
                     <CSSTransition
                         in={showSignupHeading}
                         timeout={500}
@@ -72,6 +81,10 @@ const Login = () => {
                                 name='password'
                                 {...loginForm.getInputProps('password')}
                             />
+
+                            {
+                                error && <div className='errorMessage'>{error}</div>
+                            }
                             <CSSTransition
                                 in={showForgottenPassword}
                                 timeout={500}
@@ -84,6 +97,7 @@ const Login = () => {
                         </div>
                 
                     </CSSTransition>
+
                 
                     <section className="login__form-ending">
                         <CSSTransition
@@ -92,11 +106,12 @@ const Login = () => {
                             classNames="signup-button"
                             unmountOnExit
                         >
-                            <Button styles={(theme) => ({root: {
+                            <Button loading={isLoading}  styles={(theme) => ({root: {
                                 width: rem(150),
                                 height: rem(38),
                                 fontSize: rem(19),
-                            }})} type={'submit'}>
+                            }})} 
+                            type={'submit'}>
                                 Login
                             </Button>
                         </CSSTransition>
