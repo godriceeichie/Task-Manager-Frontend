@@ -11,8 +11,8 @@ import {
 import { Loader } from "@mantine/core";
 import instance from "../../config/api";
 import useTaskContext from "../../hooks/useTaskContext";
-
-// import { TaskFormControlsProvider } from "../../contexts/TaskFormControlsContext";
+import { sidebarDisplayAtom } from "../../states";
+import { useRecoilState } from "recoil";
 
 const DashboardTasks = () => {
   const [toggleTaskView, setToggleTaskView] = useState(false);
@@ -24,19 +24,20 @@ const DashboardTasks = () => {
     setToggleTaskView(!toggleTaskView);
   };
 
+  const [sidebarDisplay, setSidebarDisplay] = useRecoilState(sidebarDisplayAtom)
   
 
   const { render, viewTaskForm, setViewTaskForm } = NewTaskBtn();
   const { createTaskForm } = CreateTask(viewTaskForm, setViewTaskForm)
   
 
-  const dashboardMainStyle = {
-    marginTop: '0.75rem',
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: '1rem',
-    width: '100%',
-  }
+  // const dashboardMainStyle = {
+  //   marginTop: '0.75rem',
+  //   display: 'grid',
+  //   gridTemplateColumns: 'repeat(3, 1fr)',
+  //   gap: '1rem',
+  //   width: '100%',
+  // }
 
   const dashboardLoadingStyle = {
     marginTop: '0.75rem',
@@ -67,23 +68,23 @@ const DashboardTasks = () => {
   return (
     <section className="dashboardTasks">
       <header className="dashboardTasks__headerContainer">
-        {/* <div className="dashboardTasks__displayView">
-                    <button
-                        className={toggleTaskView ? "" : "active"}
-                        onClick={toggleActiveClass}
-                    >
-                        <img src={gridIcon} alt="" height={20} />
-                    </button>
-                    <button
-                        className={toggleTaskView ? "active" : ""}
-                        onClick={toggleActiveClass}
-                    >
-                        <img src={listIcon} alt="" height={20} />
-                    </button>
-                </div> */}
+        
         {render}
+        {/* <div className="dashboardTasks__displayView">
+            <button
+                className={toggleTaskView ? "" : "active"}
+                onClick={toggleActiveClass}
+            >
+                <img src={gridIcon} alt="" height={20} />
+            </button>
+            <button
+                className={toggleTaskView ? "active" : ""}
+                onClick={toggleActiveClass}
+            >
+                <img src={listIcon} alt="" height={20} />
+            </button>
+        </div> */}
       </header>
-      {/* w={'70vw'} h={'50vh'} */}
       {
         isLoading ? (
           <main className="dashboardTasks__grid" style={dashboardLoadingStyle}>
@@ -91,7 +92,7 @@ const DashboardTasks = () => {
           </main>
         )
         : (
-          <main className="dashboardTasks__grid" style={dashboardMainStyle}>
+          <main className="dashboardTasks__grid">
             <TodoTasks tasks={tasks} viewTaskForm={viewTaskForm} setViewTaskForm={setViewTaskForm} />
             <InProgressTasks tasks={tasks} viewTaskForm={viewTaskForm} setViewTaskForm={setViewTaskForm}/>
             <CompletedTasks tasks={tasks} /> 
