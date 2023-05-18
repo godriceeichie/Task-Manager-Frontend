@@ -642,6 +642,7 @@ a {
   border-radius: 0px 25px 25px 0px;
   width: 20%;
   height: 100%;
+  transition: .3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .dashboardSidebar.close{
@@ -1146,7 +1147,6 @@ a {
   left: 20px;
   width: clamp(200px, 30%, 330px);
   background-color: red;
-
   pointer-events: none;
   display: flex;
   gap: .5rem;
@@ -1154,7 +1154,6 @@ a {
   border-radius: .5rem;
   transition: left .3s ease-in;
   z-index: 10;
-  /* display: none; */
 }
 
 .errorModal.active{
@@ -1341,7 +1340,7 @@ a {
   }
 
   .dashboardMain{
-    width: 95%;
+    width: 90%;
   }
 
   .dashboardSidebar__nav-name{
