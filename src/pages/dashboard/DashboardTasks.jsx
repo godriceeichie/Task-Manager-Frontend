@@ -11,8 +11,8 @@ import {
 import { Loader } from "@mantine/core";
 import instance from "../../config/api";
 import useTaskContext from "../../hooks/useTaskContext";
-import { sidebarDisplayAtom } from "../../states";
 import { useRecoilState } from "recoil";
+import taskSearchAtom from "../../states/atoms/taskSearchAtom";
 
 const DashboardTasks = () => {
   const [toggleTaskView, setToggleTaskView] = useState(false);
@@ -23,13 +23,19 @@ const DashboardTasks = () => {
   const toggleActiveClass = () => {
     setToggleTaskView(!toggleTaskView);
   };
-
-  const [sidebarDisplay, setSidebarDisplay] = useRecoilState(sidebarDisplayAtom)
   
 
   const { render, viewTaskForm, setViewTaskForm } = NewTaskBtn();
   const { createTaskForm } = CreateTask(viewTaskForm, setViewTaskForm)
-  
+
+  const [taskSearchInput, setTaskSearchInput] = useRecoilState(taskSearchAtom)
+
+  const keys = ["name", "description", "category"]
+  const search = (data) => {
+    return data.filter(item => {
+      keys.some((key) => item[key].toLowerCase().includes(taskSearchInput))
+    })
+  }
 
   // const dashboardMainStyle = {
   //   marginTop: '0.75rem',
@@ -53,7 +59,7 @@ const DashboardTasks = () => {
   useEffect(() => {
     const fetchTasks = () => {
       instance
-      .get("/tasks")
+      .get(`/tasks?q=${taskSearchInput}`)
       .then((response) => {
         dispatch({type: 'SET_TASKS', payload: response.data})
         setIsLoading(false)
@@ -63,7 +69,26 @@ const DashboardTasks = () => {
       });
     }
     fetchTasks()
-  }, [dispatch]);
+  }, [dispatch, taskSearchInput]);
+
+  // useEffect(() => {
+  //   const fetchTasks = () => {
+  //     instance
+  //     .get(`/tasks?q=${taskSearchInput}`)
+  //     .then((response) => {
+  //       dispatch({type: 'SET_TASKS', payload: response.data})
+  //       setIsLoading(false)
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  //   }
+  //   if(taskSearchInput){
+  //     fetchTasks()
+  //   }
+  // }, [dispatch, taskSearchInput]);
+
+  
 
   return (
     <section className="dashboardTasks">
