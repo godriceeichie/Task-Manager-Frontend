@@ -753,7 +753,8 @@ a {
 }
 
 .dashboardHeader-welcomeText {
-  font-size: 0.5rem;
+  /* font-size: 0.5rem; */
+  font-size: min(1.5vw, 0.5rem);
 }
 
 .dashboardHeader__searchbar {
@@ -1352,8 +1353,24 @@ a {
     display: none;
   } */
 
-  .dashboardSidebar__header>h1{
+  .dashboardSidebar__header>h1, .dashboardSidebar__main-container > li > a{
+    padding-left: unset;
+    justify-content: center;
+  }
+
+  .dashboardSidebar__header>h1>img, .dashboardSidebar__header>h1>button{
     display: none;
+  }
+
+  .dashboardSidebar__header>h1>a{
+    font-size: 1.25rem;
+    color: #3e54ac;
+    text-align: center;
+    display: none;
+  }
+
+  .dashboardSidebar__main-container > li > a > img, .dashboardSidebar__main-container > a > svg {
+    margin-right: unset;
   }
 
   .dashboardTasks__grid{
