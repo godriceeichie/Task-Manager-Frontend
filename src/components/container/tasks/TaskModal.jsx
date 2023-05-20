@@ -1,20 +1,25 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Menu, Button, Text } from '@mantine/core';
+import { Menu } from '@mantine/core';
 import moreVertIcon from "../../../assets/img/more_vert_black_24dp.svg";
 import { AiOutlineEdit } from 'react-icons/ai'
 import { MdOutlineDelete } from 'react-icons/md'
 import instance from '../../../config/api';
 import useTaskContext from '../../../hooks/useTaskContext';
 import CreateTask from './CreateTask';
+import useAuthContext from '../../../hooks/useAuthContext';
 
 const TaskModal = ({ task, setViewTaskForm, viewTaskForm }) => {
   const [deleted, setDeleted] = useState(false);
   const [edited, setEdited] = useState(false);
   const { tasks, dispatch } = useTaskContext()
-  const { fields } = CreateTask()
+  const { user } = useAuthContext()
   useEffect(() => {
     if(deleted){
-      instance.delete(`/tasks/${task._id}`)
+      instance.delete(`/tasks/${task._id}`, {
+        headers: {
+          'Authorization': `Bearer ${user && user.token}`
+        }
+      })
       .then((response) => {
         dispatch({type: 'DELETE_TASK', payload: response.data})
         
@@ -22,23 +27,23 @@ const TaskModal = ({ task, setViewTaskForm, viewTaskForm }) => {
         console.log(err.response.data.error)
       })
     }
-  },[deleted])
+  },[deleted, user])
 
-  useEffect(() => {
-    if(edited){
-      setViewTaskForm(true)
-      instance.get(`/tasks/${task._id}`)
-      .then(response => {
-        console.log(response.data)
-        fields.setname(response.data.name)
-        console.log(fields.name)
-      }, (err) => {
-        console.log(err)
-      })
-    }
+  // // useEffect(() => {
+  // //   if(edited){
+  // //     setViewTaskForm(true)
+  // //     instance.get(`/tasks/${task._id}`)
+  // //     .then(response => {
+  // //       console.log(response.data)
+  // //       fields.setname(response.data.name)
+  // //       console.log(fields.name)
+  // //     }, (err) => {
+  // //       console.log(err)
+  // //     })
+  // //   }
 
 
-  },[edited])
+  // },[edited])
 
   return (
     <Menu shadow="md" width={200}>

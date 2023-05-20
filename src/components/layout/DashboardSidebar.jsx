@@ -30,7 +30,7 @@ function DashboardSidebar() {
     <aside className={sidebarDisplay ? 'dashboardSidebar close' : 'dashboardSidebar'}>
         <header className='dashboardSidebar__header'>
           <h1>
-            <svg width="35" height="36" viewBox="0 0 42 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg className={sidebarDisplay ? 'toggle-name' : 'logo'} width="35" height="36" viewBox="0 0 42 43" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="3.5" y="4" width="35" height="35" fill="white" stroke="#3E54AC" strokeWidth="7"/>
             </svg>
             <Link to={'/'} className={sidebarDisplay && 'toggle-name'} >Slick</Link>

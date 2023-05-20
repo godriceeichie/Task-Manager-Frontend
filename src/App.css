@@ -864,7 +864,9 @@ a {
 .dashboardTasks__newTask {
   background-color: #3c79f5;
   color: white;
-  padding: 0.5rem 1rem;
+  font-size: .85rem;
+  font-size: .75rem;
+  padding: 0.5em 1em;
   border-radius: 0.25rem;
   font-weight: 600;
 }
@@ -893,6 +895,8 @@ a {
   align-items: center;
   gap: 0.5rem;
   font-size: 1.25rem;
+  /* font-size: min(3rem, 1.25rem); */
+  font-size: 1rem;
 }
 
 .dashboardTasks__gridHeading > span {
@@ -1349,10 +1353,6 @@ a {
     display: none;
   }
 
-  /* .dashboardSidebar>h1>svg{
-    display: none;
-  } */
-
   .dashboardSidebar__header>h1, .dashboardSidebar__main-container > li > a{
     padding-left: unset;
     justify-content: center;
@@ -1458,10 +1458,9 @@ a {
     padding: 1rem;
     /* gap: 1rem; */
   }
-
-  /* .hero-img{
-        width: 80%;
-    } */
+  .dashboardSidebar .logo{
+    width: 20px;
+  }
 
   .hero__signup-container {
     /* flex-direction: column; */

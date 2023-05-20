@@ -13,6 +13,8 @@ import instance from "../../config/api";
 import useTaskContext from "../../hooks/useTaskContext";
 import { useRecoilState } from "recoil";
 import taskSearchAtom from "../../states/atoms/taskSearchAtom";
+import useAuthContext from "../../hooks/useAuthContext";
+
 
 const DashboardTasks = () => {
   const [toggleTaskView, setToggleTaskView] = useState(false);
@@ -32,18 +34,10 @@ const DashboardTasks = () => {
 
   const keys = ["name", "description", "category"]
   const search = (data) => {
-    return data.filter(item => {
-      keys.some((key) => item[key].toLowerCase().includes(taskSearchInput))
-    })
+    return data && data.filter(item => keys.some(key => item[key].toLowerCase().includes(taskSearchInput)))
   }
 
-  // const dashboardMainStyle = {
-  //   marginTop: '0.75rem',
-  //   display: 'grid',
-  //   gridTemplateColumns: 'repeat(3, 1fr)',
-  //   gap: '1rem',
-  //   width: '100%',
-  // }
+  const { user } = useAuthContext()
 
   const dashboardLoadingStyle = {
     marginTop: '0.75rem',
@@ -59,7 +53,11 @@ const DashboardTasks = () => {
   useEffect(() => {
     const fetchTasks = () => {
       instance
-      .get(`/tasks?q=${taskSearchInput}`)
+      .get(`/tasks?q=${taskSearchInput}`, {
+        headers: {
+          'Authorization': `Bearer ${user && user.token}`
+        }
+      })
       .then((response) => {
         dispatch({type: 'SET_TASKS', payload: response.data})
         setIsLoading(false)
@@ -69,26 +67,10 @@ const DashboardTasks = () => {
       });
     }
     fetchTasks()
-  }, [dispatch, taskSearchInput]);
+    // console.log(user)
 
-  // useEffect(() => {
-  //   const fetchTasks = () => {
-  //     instance
-  //     .get(`/tasks?q=${taskSearchInput}`)
-  //     .then((response) => {
-  //       dispatch({type: 'SET_TASKS', payload: response.data})
-  //       setIsLoading(false)
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  //   }
-  //   if(taskSearchInput){
-  //     fetchTasks()
-  //   }
-  // }, [dispatch, taskSearchInput]);
+  }, [dispatch, user]);
 
-  
 
   return (
     <section className="dashboardTasks">
@@ -118,9 +100,9 @@ const DashboardTasks = () => {
         )
         : (
           <main className="dashboardTasks__grid">
-            <TodoTasks tasks={tasks} viewTaskForm={viewTaskForm} setViewTaskForm={setViewTaskForm} />
-            <InProgressTasks tasks={tasks} viewTaskForm={viewTaskForm} setViewTaskForm={setViewTaskForm}/>
-            <CompletedTasks tasks={tasks} /> 
+            <TodoTasks tasks={search(tasks)} viewTaskForm={viewTaskForm} setViewTaskForm={setViewTaskForm} />
+            <InProgressTasks tasks={search(tasks)} viewTaskForm={viewTaskForm} setViewTaskForm={setViewTaskForm}/>
+            <CompletedTasks tasks={search(tasks)} /> 
           </main>
         )
       }
